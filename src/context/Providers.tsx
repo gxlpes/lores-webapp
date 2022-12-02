@@ -1,10 +1,10 @@
 import { IChildren } from "../interfaces/reactInterfaces";
-import { LoginContextProvider } from "./Login/LoginContext";
+import { RegisterUserContextProvider } from "./Login/RegisterUserContext";
 
 const Providers = ({ children }: IChildren) => {
     return (
         <>
-            <LoginContextProvider>{children}</LoginContextProvider>
+            <RegisterUserContextProvider>{children}</RegisterUserContextProvider>
         </>
     );
 };

@@ -1,5 +1,4 @@
-export interface ILogin {
-  setUsername: React.Dispatch<React.SetStateAction<string>>;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
-  loginWithCredentials: () => void;
+export interface IRegisterUser {
+  handleUserForm: (key: string, value: string) => void;
+  registerWithCredentials: () => void;
 }
