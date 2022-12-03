@@ -1,3 +1,5 @@
+export const BASE_URL = "http://localhost:8080";
+
 export const REGISTER_ENDPOINT = "/api/users";
 export const AUTH_ENDPOINT = "/api/auth";
 

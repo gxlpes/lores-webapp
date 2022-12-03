@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IRegisterUser } from "../../interfaces/contextInterfaces";
-import { IChildren } from "../../interfaces/reactInterfaces";
-import { RegisterPayload } from "../../payload/UserPayload";
+import { IRegisterUser } from "../../domain/interfaces/contextInterfaces";
+import { IChildren } from "../../domain/interfaces/reactInterfaces";
+import { RegisterPayload } from "../../domain/payload/UserPayload";
 import UserService from "../../services/UserService";
 
 export const RegisterUserContext = createContext<IRegisterUser>({} as IRegisterUser);

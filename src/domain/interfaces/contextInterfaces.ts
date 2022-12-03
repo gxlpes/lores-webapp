@@ -11,4 +11,9 @@ export interface ILoginUser {
   loginWithCredentials: (e: React.FormEvent<HTMLFormElement>) => void;
   setUserForm: Dispatch<SetStateAction<LoginPayload>>;
   userForm: LoginPayload;
+  auth: any;
+}
+
+export interface IPatient {
+  getAllPatients: () => void;
 }

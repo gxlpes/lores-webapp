@@ -1,5 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { LOGIN_PAGE_ENDPOINT, MAIN_PAGE_ENDPOINT, PATIENTS_PAGE_ENDPOINT, REGISTER_PAGE_ENDPOINT } from "../common/constants";
+import RequireAuth from "../common/RequireAuth";
+import { LayoutProfile } from "../domain/enum/LayoutProfile";
+import Layout from "../layout/Layout";
 
 import ErrorPage from "../pages/Error/Error";
 import Home from '../pages/Home/Home';
@@ -15,13 +18,23 @@ const AppRoutes = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
 
-                <Route path={REGISTER_PAGE_ENDPOINT} element={<RegisterUser />} />
-                <Route path={LOGIN_PAGE_ENDPOINT} element={<LoginUser />} />
-                <Route path={PATIENTS_PAGE_ENDPOINT} element={<Patients />} />
-                <Route path={MAIN_PAGE_ENDPOINT} element={<Main />} />
+                <Route element={<Layout layoutProfile={LayoutProfile.public} />}>
+                    <Route path={REGISTER_PAGE_ENDPOINT} element={<RegisterUser />} />
+                    <Route path={LOGIN_PAGE_ENDPOINT} element={<LoginUser />} />
+                </Route>
+
+                <Route element={<RequireAuth />}>
+                    <Route element={<Layout layoutProfile={LayoutProfile.private} />}>
+                        {/* protected */}
+                        <Route path={PATIENTS_PAGE_ENDPOINT} element={<Patients />} />
+                        <Route path={MAIN_PAGE_ENDPOINT} element={<Main />} />
+                    </Route>
+                </Route>
+
 
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
+
         </>
     )
 }

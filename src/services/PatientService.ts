@@ -1,10 +1,11 @@
-import { LoginPayload, RegisterPayload } from "../payload/UserPayload";
+import { PATIENTS_PAGE_ENDPOINT } from "../common/constants";
+import { LoginPayload, RegisterPayload } from "../domain/payload/UserPayload";
 import api from "./Api";
 
 export default class UserService {
-  public async getAllPatients(formUser: RegisterPayload) {
+  public async getAllPatients() {
     try {
-      return await api.post("/api/users", formUser);
+      return await api.get(PATIENTS_PAGE_ENDPOINT);
     } catch (error) {
       console.log(error);
     }
