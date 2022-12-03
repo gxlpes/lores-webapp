@@ -1,17 +1,16 @@
-import { FormContainer, LoginWrapper, LogoContainer } from './RegisterUserStyles'
+import { FormContainer, RegisterWrapper, LogoContainer } from './RegisterUserStyles'
 import { ReactComponent as LoresLogo } from '../../assets/logofull.svg';
 import { useContext } from 'react';
-import { RegisterUserContext } from '../../context/Login/RegisterUserContext';
+import { RegisterUserContext } from '../../context/User/RegisterUserContext';
 import { useNavigate } from 'react-router-dom';
 
 
-const Login = () => {
-    const { handleUserForm, registerWithCredentials } = useContext(RegisterUserContext);
-    const navigate = useNavigate();
+const RegisterUser = () => {
+    const { handleRegisterUserForm, registerWithCredentials } = useContext(RegisterUserContext);
 
     return (
         <>
-            <LoginWrapper>
+            <RegisterWrapper>
 
                 <LogoContainer>
                     <LoresLogo />
@@ -19,30 +18,30 @@ const Login = () => {
 
                 <FormContainer >
                     <label htmlFor="username">Nome de usuário</label>
-                    <input type="name" name="name" id="name" onChange={(e) => handleUserForm("username", e.target.value)} />
+                    <input type="name" name="name" id="name" onChange={(e) => handleRegisterUserForm("username", e.target.value)} />
 
                     <label htmlFor="password">Senha</label>
-                    <input type="password" name="password" id="password" onChange={(e) => handleUserForm("password", e.target.value)} />
+                    <input type="password" name="password" id="password" onChange={(e) => handleRegisterUserForm("password", e.target.value)} />
 
                     <label htmlFor="retypepassword">Redigite a sua senha</label>
-                    <input type="password" name="retypepassword" id="retypepassword" onChange={(e) => handleUserForm("retypePassword", e.target.value)} />
+                    <input type="password" name="retypepassword" id="retypepassword" onChange={(e) => handleRegisterUserForm("retypePassword", e.target.value)} />
 
 
-                    <input type="radio" id="user" name="user" value="2" onChange={(e) => handleUserForm("roleName", e.target.value)} />
+                    <input type="radio" id="user" name="user" value="2" onChange={(e) => handleRegisterUserForm("roleName", e.target.value)} />
                     <label htmlFor="user">Usuário</label>
 
-                    <input type="radio" id="admin" name="admin" value="1" onChange={(e) => handleUserForm("roleName", e.target.value)} />
+                    <input type="radio" id="admin" name="admin" value="1" onChange={(e) => handleRegisterUserForm("roleName", e.target.value)} />
                     <label htmlFor="admin">Administrador</label>
 
 
                     <button onClick={(e) => {
                         e.preventDefault()
                         registerWithCredentials()
-                    }}>Entrar</button>
+                    }}>Cadastrar</button>
                 </FormContainer>
-            </LoginWrapper>
+            </RegisterWrapper >
         </>
     )
 }
 
-export default Login
+export default RegisterUser;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginWrapper = styled.div`
+export const RegisterWrapper = styled.div`
     display: flex;
     gap: 1rem;
 `

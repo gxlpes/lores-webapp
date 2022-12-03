@@ -2,26 +2,27 @@ import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IRegisterUser } from "../../interfaces/contextInterfaces";
 import { IChildren } from "../../interfaces/reactInterfaces";
-import { LoginModel } from "../../models/LoginModel";
+import { RegisterPayload } from "../../payload/UserPayload";
 import UserService from "../../services/RegisterUserService";
 
 export const RegisterUserContext = createContext<IRegisterUser>({} as IRegisterUser);
 
 export const RegisterUserContextProvider = ({ children }: IChildren) => {
+    const [userForm, setUserForm] = useState<RegisterPayload>({} as RegisterPayload);
     const userService = new UserService();
-    const [userForm, setUserForm] = useState<LoginModel>({} as LoginModel);
+    const navigate = useNavigate();
 
-    const handleUserForm = (key: string, value: string) => {
+    const handleRegisterUserForm = (key: string, value: string) => {
         setUserForm({ ...userForm, [key]: value });
     }
 
     const registerWithCredentials = async () => {
         console.log(userForm);
         let response = await userService.registerUser(userForm);
-        console.log(response);
+        if (response?.status == 200) navigate("/login")
     }
 
     return (
-        <RegisterUserContext.Provider value={{ handleUserForm, registerWithCredentials }}>{children}</RegisterUserContext.Provider>
+        <RegisterUserContext.Provider value={{ handleRegisterUserForm, registerWithCredentials }}>{children}</RegisterUserContext.Provider>
     )
 }
