@@ -23,9 +23,8 @@ const AppRoutes = () => {
                     <Route path={LOGIN_PAGE_ENDPOINT} element={<LoginUser />} />
                 </Route>
 
-                <Route element={<RequireAuth />}>
+                <Route element={<RequireAuth allowedRoles={[1]} />}>
                     <Route element={<Layout layoutProfile={LayoutProfile.private} />}>
-                        {/* protected */}
                         <Route path={PATIENTS_PAGE_ENDPOINT} element={<Patients />} />
                         <Route path={MAIN_PAGE_ENDPOINT} element={<Main />} />
                     </Route>
