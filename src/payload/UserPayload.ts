@@ -7,4 +7,5 @@ export interface RegisterPayload {
   username: string;
   password: string;
   retypePassword: string;
+  roleName: string;
 }

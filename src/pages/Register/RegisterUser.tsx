@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const RegisterUser = () => {
-    const { handleRegisterUserForm, registerWithCredentials } = useContext(RegisterUserContext);
+    const { setUserForm, userForm, registerWithCredentials } = useContext(RegisterUserContext);
 
     return (
         <>
@@ -16,28 +16,26 @@ const RegisterUser = () => {
                     <LoresLogo />
                 </LogoContainer>
 
-                <FormContainer >
+                <FormContainer onSubmit={(e) => registerWithCredentials(e)}>
                     <label htmlFor="username">Nome de usuário</label>
-                    <input type="name" name="name" id="name" onChange={(e) => handleRegisterUserForm("username", e.target.value)} />
+                    <input type="name" name="name" id="name" onChange={(e) => setUserForm({ ...userForm, ["username"]: e.target.value })}
+                    />
 
                     <label htmlFor="password">Senha</label>
-                    <input type="password" name="password" id="password" onChange={(e) => handleRegisterUserForm("password", e.target.value)} />
+                    <input type="password" name="password" id="password" onChange={(e) => setUserForm({ ...userForm, ["password"]: e.target.value })} />
 
                     <label htmlFor="retypepassword">Redigite a sua senha</label>
-                    <input type="password" name="retypepassword" id="retypepassword" onChange={(e) => handleRegisterUserForm("retypePassword", e.target.value)} />
+                    <input type="password" name="retypepassword" id="retypepassword" onChange={(e) => setUserForm({ ...userForm, ["retypePassword"]: e.target.value })} />
 
 
-                    <input type="radio" id="user" name="user" value="2" onChange={(e) => handleRegisterUserForm("roleName", e.target.value)} />
+                    <input type="radio" id="user" name="user" value="2" onChange={(e) => setUserForm({ ...userForm, ["roleName"]: e.target.value })} />
                     <label htmlFor="user">Usuário</label>
 
-                    <input type="radio" id="admin" name="admin" value="1" onChange={(e) => handleRegisterUserForm("roleName", e.target.value)} />
+                    <input type="radio" id="admin" name="admin" value="1" onChange={(e) => setUserForm({ ...userForm, ["roleName"]: e.target.value })} />
                     <label htmlFor="admin">Administrador</label>
 
 
-                    <button onClick={(e) => {
-                        e.preventDefault()
-                        registerWithCredentials()
-                    }}>Cadastrar</button>
+                    <button>Cadastrar</button>
                 </FormContainer>
             </RegisterWrapper >
         </>

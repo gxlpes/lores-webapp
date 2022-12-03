@@ -1,9 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
+import { LoginPayload, RegisterPayload } from "../payload/UserPayload";
+
 export interface IRegisterUser {
-  handleRegisterUserForm: (key: string, value: string) => void;
-  registerWithCredentials: () => void;
+  registerWithCredentials: (e: React.FormEvent<HTMLFormElement>) => void;
+  setUserForm: Dispatch<SetStateAction<RegisterPayload>>;
+  userForm: RegisterPayload;
 }
 
 export interface ILoginUser {
-  handleUserLoginForm: (key: string, value: string) => void;
-  loginWithCredentials: () => void;
+  loginWithCredentials: (e: React.FormEvent<HTMLFormElement>) => void;
+  setUserForm: Dispatch<SetStateAction<LoginPayload>>;
+  userForm: LoginPayload;
 }

@@ -2,20 +2,17 @@ import React, { useContext } from 'react'
 import { LoginUserContext } from '../../context/User/LoginUserContext';
 
 const LoginUser = () => {
-    const { handleUserLoginForm, loginWithCredentials } = useContext(LoginUserContext);
+    const { setUserForm, userForm, loginWithCredentials } = useContext(LoginUserContext);
 
     return (
-        <form>
+        <form onSubmit={(e) => loginWithCredentials(e)}>
             <label htmlFor="username">Nome de usuário</label>
-            <input type="name" name="name" id="name" onChange={(e) => handleUserLoginForm("username", e.target.value)} />
+            <input type="name" name="name" id="name" onChange={(e) => setUserForm({ ...userForm, ["username"]: e.target.value })} />
 
             <label htmlFor="password">Senha</label>
-            <input type="password" name="password" id="password" onChange={(e) => handleUserLoginForm("password", e.target.value)} />
+            <input type="password" name="password" id="password" onChange={(e) => setUserForm({ ...userForm, ["password"]: e.target.value })} />
 
-            <button onClick={(e) => {
-                e.preventDefault()
-                loginWithCredentials()
-            }}>Entrar</button>
+            <button type="submit">Entrar</button>
         </form>
     )
 }
