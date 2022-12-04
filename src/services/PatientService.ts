@@ -1,11 +1,12 @@
+import { api, axiosPrivate } from "../api/axios";
 import { PATIENTS_PAGE_ENDPOINT } from "../common/constants";
-import { LoginPayload, RegisterPayload } from "../domain/payload/UserPayload";
-import api from "./Api";
+import { LoginPayload } from "../domain/payload/UserPayload";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 export default class UserService {
   public async getAllPatients() {
     try {
-      return await api.get(PATIENTS_PAGE_ENDPOINT);
+      return await axiosPrivate.get(PATIENTS_PAGE_ENDPOINT);
     } catch (error) {
       console.log(error);
     }

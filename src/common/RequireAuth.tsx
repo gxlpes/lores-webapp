@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { LOGIN_PAGE_ENDPOINT, MAIN_PAGE_ENDPOINT } from "./constants";
+import { MAIN_PAGE_ENDPOINT } from "./constants";
 
 const RequireAuth = ({ allowedRoles }: any) => {
   const location = useLocation();

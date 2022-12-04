@@ -1,6 +1,6 @@
+import { api } from "../api/axios";
 import { AUTH_ENDPOINT, REGISTER_ENDPOINT } from "../common/constants";
 import { LoginPayload, RegisterPayload } from "../domain/payload/UserPayload";
-import api from "./Api";
 
 export default class UserService {
   public async registerUser(formUser: RegisterPayload) {

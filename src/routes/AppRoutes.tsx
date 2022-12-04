@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { LOGIN_PAGE_ENDPOINT, MAIN_PAGE_ENDPOINT, PATIENTS_PAGE_ENDPOINT, REGISTER_PAGE_ENDPOINT } from "../common/constants";
 import RequireAuth from "../common/RequireAuth";
 import { LayoutProfile } from "../domain/enum/LayoutProfile";
+import { RolesName } from "../domain/enum/RolesName";
 import Layout from "../layout/Layout";
 
 import ErrorPage from "../pages/Error/Error";
@@ -23,7 +24,7 @@ const AppRoutes = () => {
                     <Route path={LOGIN_PAGE_ENDPOINT} element={<LoginUser />} />
                 </Route>
 
-                <Route element={<RequireAuth allowedRoles={[1]} />}>
+                <Route element={<RequireAuth allowedRoles={[RolesName.admin]} />}>
                     <Route element={<Layout layoutProfile={LayoutProfile.private} />}>
                         <Route path={PATIENTS_PAGE_ENDPOINT} element={<Patients />} />
                         <Route path={MAIN_PAGE_ENDPOINT} element={<Main />} />

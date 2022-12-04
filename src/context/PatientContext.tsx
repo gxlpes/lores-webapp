@@ -16,9 +16,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
         return response;
     }
 
-    useEffect((() => {
-        getAllPatients();
-    }), [])
+
 
     return (
         <PatientContext.Provider value={{

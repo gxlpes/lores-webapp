@@ -18,12 +18,14 @@ export const LoginUserContextProvider = ({ children }: IChildren) => {
         e.preventDefault()
         let response = await userService.loginUser(userForm);
         if (response?.status == 200) navigate(MAIN_PAGE_ENDPOINT);
+        localStorage.setItem("data", JSON.stringify(response?.data.token))
         return setAuth(response?.data);
     }
 
     return (
         <LoginUserContext.Provider value={{
             auth,
+            setAuth,
             userForm,
             setUserForm,
             loginWithCredentials
