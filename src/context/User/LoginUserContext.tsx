@@ -1,6 +1,7 @@
-import { createContext, FormEvent, useState } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MAIN_PAGE_ENDPOINT } from "../../common/constants";
+import { saveLocalStorage } from "../../common/localStorage";
 import { ILoginUser } from "../../domain/interfaces/contextInterfaces";
 import { IChildren } from "../../domain/interfaces/reactInterfaces";
 import { LoginPayload } from "../../domain/payload/UserPayload";
@@ -18,8 +19,8 @@ export const LoginUserContextProvider = ({ children }: IChildren) => {
         e.preventDefault()
         let response = await userService.loginUser(userForm);
         if (response?.status == 200) navigate(MAIN_PAGE_ENDPOINT);
-        localStorage.setItem("data", JSON.stringify(response?.data.token))
-        return setAuth(response?.data);
+        saveLocalStorage(response?.data.token);
+        return setAuth(response?.data)
     }
 
     return (

@@ -1,13 +1,13 @@
-export interface IPerson {
+export interface PatientPayload {
   fullName: string;
   birthdate: string;
   cpfNumber: string;
   telephoneNumber: string;
   emailAddress: string;
-  address: IAddress;
+  address: AddressPayload;
 }
 
-export interface IAddress {
+export interface AddressPayload {
   mainAddress: string;
   numberAddress: string;
   neighborHood: string;

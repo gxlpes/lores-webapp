@@ -1,8 +1,8 @@
 import axios from "axios";
 import { BASE_URL } from "../common/constants";
-import useAuth from "../hooks/useAuth";
+import { getLocalStorage } from "../common/localStorage";
 
-export const api = axios.create({
+export const axiosPublic = axios.create({
     baseURL: BASE_URL,
 });
 
@@ -13,12 +13,7 @@ export const axiosPrivate = axios.create({
 })
 
 axiosPrivate.interceptors.request.use(async (config) => {
-    const token = await JSON.parse(localStorage.getItem("data") || '{}')
-
-    console.log("dataaaaa", token);
-
-
-    config.headers!.Authorization = `Bearer ${token}`
+    config.headers!.Authorization = `Bearer ${getLocalStorage("token")}`
     return config
 })
 
