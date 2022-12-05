@@ -19,7 +19,7 @@ export const LoginUserContextProvider = ({ children }: IChildren) => {
         e.preventDefault()
         let response = await userService.loginUser(userForm);
         if (response?.status == 200) navigate(MAIN_PAGE_ENDPOINT);
-        saveLocalStorage(response?.data.token);
+        saveLocalStorage(response?.data);
         return setAuth(response?.data)
     }
 

@@ -6,11 +6,11 @@ import { RegisterUserContextProvider } from "./User/RegisterUserContext";
 const Providers = ({ children }: IChildren) => {
     return (
         <>
-            <PatientContextProvider>
-                <LoginUserContextProvider>
-                    <RegisterUserContextProvider>{children}</RegisterUserContextProvider>
-                </LoginUserContextProvider>
-            </PatientContextProvider>
+            <LoginUserContextProvider>
+                <RegisterUserContextProvider>
+                    {children}
+                </RegisterUserContextProvider>
+            </LoginUserContextProvider>
         </>
     );
 };
