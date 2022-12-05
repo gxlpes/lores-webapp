@@ -1,6 +1,6 @@
 import { axiosPrivate } from "../api/axios";
 import { PATIENTS_PAGE_ENDPOINT } from "../common/constants";
-import { PatientPayload } from "../domain/payload/PatientPayload";
+import { PersonPayload } from "../domain/payload/PersonPayload";
 import { LoginPayload } from "../domain/payload/UserPayload";
 
 export default class UserService {
@@ -12,7 +12,7 @@ export default class UserService {
     }
   }
 
-  public async savePatient(formPatient: PatientPayload) {
+  public async savePatient(formPatient: PersonPayload) {
     try {
       let person = {
         person: formPatient,

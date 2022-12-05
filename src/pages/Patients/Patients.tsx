@@ -3,12 +3,9 @@ import { PatientContext } from '../../context/PatientContext';
 
 const Patients = () => {
     const { allPatients, setFormPatient, formPatient, savePatient } = useContext(PatientContext);
-    console.log("patients", allPatients);
-
 
     return (
         <>
-
             <form onSubmit={(e) => savePatient(e)}>
                 <>
                     <label htmlFor="fullName">Nome completo</label>

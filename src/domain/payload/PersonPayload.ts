@@ -1,4 +1,4 @@
-export interface PatientPayload {
+export interface PersonPayload {
   fullName: string;
   birthdate: string;
   cpfNumber: string;

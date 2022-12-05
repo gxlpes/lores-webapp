@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import { AddressPayload, PatientPayload } from "../payload/PatientPayload";
+import { DentistPayload } from "../payload/DentistPayload";
+import { PersonPayload } from "../payload/PersonPayload";
 import { LoginPayload, RegisterPayload } from "../payload/UserPayload";
 
 export interface IRegisterUser {
@@ -20,7 +21,12 @@ export interface ILoginUser {
 export interface IPatient {
   getAllPatients: () => void;
   allPatients: any;
-  formPatient: PatientPayload;
-  setFormPatient: Dispatch<SetStateAction<PatientPayload>>;
+  formPatient: PersonPayload;
+  setFormPatient: Dispatch<SetStateAction<PersonPayload>>;
   savePatient: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+export interface IDentist {
+  getAllDentists: () => void;
+  allDentists: DentistPayload[];
 }
