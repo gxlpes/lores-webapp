@@ -28,5 +28,8 @@ export interface IPatient {
 
 export interface IDentist {
   getAllDentists: () => void;
-  allDentists: DentistPayload[];
+  allDentists: DentistPayload[] | string[];
+  formDentist: DentistPayload;
+  setFormDentist: Dispatch<SetStateAction<DentistPayload>>;
+  saveDentist: (e: React.FormEvent<HTMLFormElement>) => void;
 }
