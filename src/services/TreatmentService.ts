@@ -1,6 +1,5 @@
 import { axiosPrivate } from "../api/axios";
 import { TREATMENT_PAGE_ENDPOINT } from "../common/constants";
-import { SpecialtyPayload } from "../domain/payload/SpecialtyPayload";
 import { TreatmentPayload } from "../domain/payload/TreatmentPayload";
 
 export default class TreatmentService {

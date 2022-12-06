@@ -64,7 +64,10 @@ const Patients = () => {
 
             {
                 allPatients.map((el: any) => (
-                    <p>{el.person.fullName}</p>
+                    <>
+                        <p>{el.person.fullName}</p>
+                        <p>{el.id}</p>
+                    </>
                 ))
             }
 

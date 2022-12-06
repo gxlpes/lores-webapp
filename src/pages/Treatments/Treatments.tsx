@@ -19,6 +19,7 @@ const Treatments = () => {
                             <p>{el.priceAppointment}</p>
                             <p>{el.procedureName}</p>
                             <p>{el.fieldOfSpecialty}</p>
+                            <p>{el.id}</p>
                             <a style={{ cursor: "pointer" }} onClick={() => deleteMethodItem(el.id)}>Excluir</a>
                         </>
                     ))

@@ -15,6 +15,7 @@ const Dentists = () => {
                     allDentists!.map((el: any) => (
                         <>
                             <p>{el.person.fullName}</p>
+                            <p>{el.id}</p>
                             <a style={{ cursor: "pointer" }} onClick={() => deleteMethodItem(el.id)}>Excluir</a>
                         </>
                     ))

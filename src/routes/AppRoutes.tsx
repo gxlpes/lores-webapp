@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { DENTISTS_PAGE_ENDPOINT, LOGIN_PAGE_ENDPOINT, MAIN_PAGE_ENDPOINT, PATIENTS_PAGE_ENDPOINT, REGISTER_PAGE_ENDPOINT, SPECIALTY_PAGE_ENDPOINT, TREATMENT_PAGE_ENDPOINT } from "../common/constants";
+import { APPOINTMENTS_PAGE_ENDPOINT, DENTISTS_PAGE_ENDPOINT, LOGIN_PAGE_ENDPOINT, MAIN_PAGE_ENDPOINT, PATIENTS_PAGE_ENDPOINT, REGISTER_PAGE_ENDPOINT, SPECIALTY_PAGE_ENDPOINT, TREATMENT_PAGE_ENDPOINT } from "../common/constants";
 import RequireAuth from "../common/RequireAuth";
+import { AppointmentContextProvider } from "../context/AppointmentContext";
 import { DentistContextProvider } from "../context/DentistContext";
 import { PatientContextProvider } from "../context/PatientContext";
 import { SpecialtyContextProvider } from "../context/SpecialtyContext";
@@ -8,6 +9,7 @@ import { TreatmentContextProvider } from "../context/TreatmentContext";
 import { LayoutProfile } from "../domain/enum/LayoutProfile";
 import { RolesName } from "../domain/enum/RolesName";
 import Layout from "../layout/Layout";
+import Appointments from "../pages/Appointments/Appointments";
 import Dentists from "../pages/Dentists/Dentists";
 
 import ErrorPage from "../pages/Error/Error";
@@ -54,6 +56,11 @@ const AppRoutes = () => {
                             <TreatmentContextProvider>
                                 <Treatments />
                             </TreatmentContextProvider>} />
+
+                        <Route path={APPOINTMENTS_PAGE_ENDPOINT} element={
+                            <AppointmentContextProvider>
+                                <Appointments />
+                            </AppointmentContextProvider>} />
 
 
                         <Route path={MAIN_PAGE_ENDPOINT} element={<Main />} />

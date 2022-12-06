@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { AppointmentPayload } from "../payload/AppointmentPayload";
 import { DentistPayload } from "../payload/DentistPayload";
 import { PersonPayload } from "../payload/PersonPayload";
 import { SpecialtyPayload } from "../payload/SpecialtyPayload";
@@ -43,4 +44,10 @@ export interface ITreatment extends IServiceMethods {
   allTreatments: any;
   formTreatment: TreatmentPayload;
   setFormTreatment: Dispatch<SetStateAction<TreatmentPayload>>;
+}
+
+export interface IAppointment extends IServiceMethods {
+  allAppointments: any;
+  formAppointment: AppointmentPayload;
+  setFormAppointment: Dispatch<SetStateAction<AppointmentPayload>>;
 }

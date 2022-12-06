@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { DentistContext } from '../../context/DentistContext'
 import { TreatmentContext } from '../../context/TreatmentContext'
 
 const FormTreatment = () => {
