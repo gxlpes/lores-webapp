@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { DentistContext } from '../../context/DentistContext'
 
 const FormDentist = () => {
-    const { formDentist, setFormDentist, saveDentist } = useContext(DentistContext)
+    const { formDentist, setFormDentist, saveMethodItem } = useContext(DentistContext)
 
     return (
-        <form onSubmit={(e) => saveDentist(e)}>
+        <form onSubmit={(e) => saveMethodItem(e)}>
             <>
                 <label htmlFor="fullName">Número CRO</label>
                 <input type="number" name="fullName" id="fullName" onChange={(e) => setFormDentist({ ...formDentist, croNumber: e.target.value })} />

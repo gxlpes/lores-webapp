@@ -13,17 +13,17 @@ export default class DentistService {
     }
   }
 
-  public async getDentist() {
+  public async saveDentist(formDentist: DentistPayload) {
     try {
-      return await axiosPrivate.get(DENTISTS_PAGE_ENDPOINT);
+      return await axiosPrivate.post(DENTISTS_PAGE_ENDPOINT, formDentist);
     } catch (error) {
       console.log(error);
     }
   }
 
-  public async saveDentist(formDentist: DentistPayload) {
+  public async deleteDentist(id: string) {
     try {
-      return await axiosPrivate.post(DENTISTS_PAGE_ENDPOINT, formDentist);
+      return await axiosPrivate.delete(DENTISTS_PAGE_ENDPOINT + "/" + id);
     } catch (error) {
       console.log(error);
     }

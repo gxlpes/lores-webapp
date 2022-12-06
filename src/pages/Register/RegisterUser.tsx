@@ -1,8 +1,8 @@
 import { FormContainer, RegisterWrapper, LogoContainer } from './RegisterUserStyles'
 import { ReactComponent as LoresLogo } from '../../assets/logofull.svg';
 import { useContext } from 'react';
-import { RegisterUserContext } from '../../context/User/RegisterUserContext';
 import { useNavigate } from 'react-router-dom';
+import { RegisterUserContext } from '../../context/User/RegisterContext';
 
 
 const RegisterUser = () => {

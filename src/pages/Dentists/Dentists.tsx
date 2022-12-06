@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import { DentistContext } from '../../context/DentistContext'
+import { useContext } from 'react';
+import { DentistContext } from '../../context/DentistContext';
 import FormDentist from './FormDentist';
 
 const Dentists = () => {
-    const { allDentists } = useContext(DentistContext);
+    const { allDentists, deleteMethodItem } = useContext(DentistContext);
 
     return (
         <>
@@ -15,6 +15,7 @@ const Dentists = () => {
                     allDentists!.map((el: any) => (
                         <>
                             <p>{el.person.fullName}</p>
+                            <a style={{ cursor: "pointer" }} onClick={() => deleteMethodItem(el.id)}>Excluir</a>
                         </>
                     ))
                 }</>)

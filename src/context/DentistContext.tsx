@@ -12,7 +12,7 @@ export const DentistContextProvider = ({ children }: IChildren) => {
     const [formDentist, setFormDentist] = useState<DentistPayload>({} as DentistPayload)
     const [loading, setLoading] = useState(true);
 
-    const getAllDentists = async () => {
+    const getAllMethodItems = async () => {
         let response = await dentistService.getAllDentists();
         console.log(response);
 
@@ -22,7 +22,7 @@ export const DentistContextProvider = ({ children }: IChildren) => {
         }
     }
 
-    const saveDentist = async (e: React.FormEvent<HTMLFormElement>) => {
+    const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formDentist);
         let response = await dentistService.saveDentist(formDentist);
@@ -32,17 +32,23 @@ export const DentistContextProvider = ({ children }: IChildren) => {
         }
     }
 
+    const deleteMethodItem = async (id: string) => {
+        let response = await dentistService.deleteDentist(id);
+        console.log(response);
+    }
+
     useEffect((() => {
-        getAllDentists();
+        getAllMethodItems();
     }), [])
 
     return (
         <DentistContext.Provider value={{
             allDentists,
-            getAllDentists,
+            deleteMethodItem,
+            getAllMethodItems,
             setFormDentist,
             formDentist,
-            saveDentist
+            saveMethodItem
         }}>
             <>
                 {loading ? <p>loading</p>

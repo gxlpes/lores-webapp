@@ -12,7 +12,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
     const [formPatient, setFormPatient] = useState<PersonPayload>({} as PersonPayload)
     const [loading, setLoading] = useState(true);
 
-    const getAllPatients = async () => {
+    const getAllMethodItems = async () => {
         let response = await patientService.getAllPatients();
         if (response?.status == 200) {
             setAllPatients(response.data);
@@ -20,22 +20,28 @@ export const PatientContextProvider = ({ children }: IChildren) => {
         }
     }
 
-    const savePatient = async (e: React.FormEvent<HTMLFormElement>) => {
+    const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let response = await patientService.savePatient(formPatient);
     }
 
+    const deleteMethodItem = async (id: string) => {
+        let response = await patientService.deletePatient(id);
+        console.log(response);
+    }
+
     useEffect((() => {
-        getAllPatients();
+        getAllMethodItems();
     }), [])
 
     return (
         <PatientContext.Provider value={{
-            formPatient,
-            savePatient,
-            setFormPatient,
             allPatients,
-            getAllPatients
+            formPatient,
+            setFormPatient,
+            saveMethodItem,
+            deleteMethodItem,
+            getAllMethodItems
         }}>
             <>
                 {loading ? <p>loading</p>
@@ -45,6 +51,6 @@ export const PatientContextProvider = ({ children }: IChildren) => {
                         </>
                     )}
             </>
-        </PatientContext.Provider>
+        </PatientContext.Provider >
     )
 }

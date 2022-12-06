@@ -1,7 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 import { DentistPayload } from "../payload/DentistPayload";
 import { PersonPayload } from "../payload/PersonPayload";
+import { SpecialtyPayload } from "../payload/SpecialtyPayload";
+import { TreatmentPayload } from "../payload/TreatmentPayload";
 import { LoginPayload, RegisterPayload } from "../payload/UserPayload";
+import { IServiceMethods } from "./serviceInterfaces";
 
 export interface IRegisterUser {
   registerWithCredentials: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -18,18 +21,26 @@ export interface ILoginUser {
   setAuth: any;
 }
 
-export interface IPatient {
-  getAllPatients: () => void;
+export interface IPatient extends IServiceMethods {
   allPatients: any;
   formPatient: PersonPayload;
   setFormPatient: Dispatch<SetStateAction<PersonPayload>>;
-  savePatient: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export interface IDentist {
-  getAllDentists: () => void;
+export interface IDentist extends IServiceMethods {
   allDentists: DentistPayload[] | string[];
   formDentist: DentistPayload;
   setFormDentist: Dispatch<SetStateAction<DentistPayload>>;
-  saveDentist: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+export interface ISpecialty extends IServiceMethods {
+  allSpecialties: any;
+  formSpecialty: SpecialtyPayload;
+  setFormSpecialty: Dispatch<SetStateAction<SpecialtyPayload>>;
+}
+
+export interface ITreatment extends IServiceMethods {
+  allTreatments: any;
+  formTreatment: TreatmentPayload;
+  setFormTreatment: Dispatch<SetStateAction<TreatmentPayload>>;
 }

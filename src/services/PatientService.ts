@@ -25,9 +25,9 @@ export default class UserService {
     }
   }
 
-  public async getPatient(formUser: LoginPayload) {
+  public async deletePatient(id: string) {
     try {
-      return await axiosPrivate.post("/api/auth", formUser);
+      return await axiosPrivate.delete(PATIENTS_PAGE_ENDPOINT + "/" + id);
     } catch (error) {
       console.log(error);
     }

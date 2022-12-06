@@ -1,7 +1,6 @@
 import { IChildren } from "../domain/interfaces/reactInterfaces";
-import { PatientContextProvider } from "./PatientContext";
-import { LoginUserContextProvider } from "./User/LoginUserContext";
-import { RegisterUserContextProvider } from "./User/RegisterUserContext";
+import { LoginUserContextProvider } from "./User/LoginContext";
+import { RegisterUserContextProvider } from "./User/RegisterContext";
 
 const Providers = ({ children }: IChildren) => {
     return (

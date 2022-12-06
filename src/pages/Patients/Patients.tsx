@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react';
 import { PatientContext } from '../../context/PatientContext';
 
 const Patients = () => {
-    const { allPatients, setFormPatient, formPatient, savePatient } = useContext(PatientContext);
+    const { allPatients, setFormPatient, formPatient, saveMethodItem } = useContext(PatientContext);
 
     return (
         <>
-            <form onSubmit={(e) => savePatient(e)}>
+            <form onSubmit={(e) => saveMethodItem(e)}>
                 <>
                     <label htmlFor="fullName">Nome completo</label>
                     <input type="name" name="fullName" id="fullName" onChange={(e) => setFormPatient({ ...formPatient, ["fullName"]: e.target.value })} />
