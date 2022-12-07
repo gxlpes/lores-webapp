@@ -9,13 +9,13 @@ const Appointments = () => {
             <form onSubmit={(e) => saveMethodItem(e)}>
                 <>
                     <label htmlFor="idDentist">Dentista</label>
-                    <input type="text" name="idDentist" id="idDentist" onChange={(e) => setFormAppointment({ ...formAppointment, dentistId: e.target.value })} />
+                    <input type="text" name="idDentist" id="idDentist" onChange={(e) => setFormAppointment({ ...formAppointment, dentist: { ...formAppointment.dentist, id: e.target.value } })} />
 
                     <label htmlFor="idPatient">Paciente</label>
-                    <input type="text" name="idPatient" id="idPatient" onChange={(e) => setFormAppointment({ ...formAppointment, patientId: e.target.value })} />
+                    <input type="text" name="idPatient" id="idPatient" onChange={(e) => setFormAppointment({ ...formAppointment, patient: { ...formAppointment.patient, id: e.target.value } })} />
 
-                    <label htmlFor="idAppointment">Consulta</label>
-                    <input type="text" name="idAppointment" id="idAppointment" onChange={(e) => setFormAppointment({ ...formAppointment, treatmentId: e.target.value })} />
+                    <label htmlFor="idAppointment">Tratamento</label>
+                    <input type="text" name="idAppointment" id="idAppointment" onChange={(e) => setFormAppointment({ ...formAppointment, treatment: { ...formAppointment.treatment, id: e.target.value } })} />
 
                     <label htmlFor="idAppointments">Data</label>
                     <input type="date" name="idDentist" id="idDentist" onChange={(e) => setFormAppointment({ ...formAppointment, dateAppointment: e.target.value })} />

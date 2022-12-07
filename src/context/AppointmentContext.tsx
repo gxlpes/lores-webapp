@@ -26,12 +26,12 @@ export const AppointmentContextProvider = ({ children }: IChildren) => {
 
     const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formAppointment);
+        console.log("form", formAppointment);
         let response = await appointmentService.saveAppointment(formAppointment);
 
-        if (response?.status == 200) {
-            window.location.href = "/main";
-        }
+        // if (response?.status == 200) {
+        //     window.location.href = "/main";
+        // }
     }
 
     const deleteMethodItem = async (id: string) => {
