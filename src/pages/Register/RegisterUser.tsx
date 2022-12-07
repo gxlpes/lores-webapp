@@ -12,9 +12,9 @@ const RegisterUser = () => {
         <>
             <RegisterUserWrapper>
                 <Fullpage color={SEC_COLOR}>
-                    <Content direction="column">
+                    <Content maxWidth={true} direction="column" >
                         <HeaderRegister>
-                            <h3>Cadastrar usuário</h3>
+                            <h3>Cadastrar</h3>
                             <DotContainer>
                                 <Dot color={MAIN_COLOR} />
                                 <Dot color={WHITE_COLOR} />

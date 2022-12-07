@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const FullpageH = styled.div`
+export const FullpageW = styled.div`
     width: 100vw;
     min-width: 100%;    
 `

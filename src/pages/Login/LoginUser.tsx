@@ -1,19 +1,43 @@
 import { useContext } from 'react';
 import { LoginUserContext } from '../../context/User/LoginContext';
+import { SEC_COLOR, MAIN_COLOR, WHITE_COLOR } from '../../styles/constants/colors';
+import { Content } from '../../styles/Content';
+import { DotContainer, Dot } from '../../styles/Dot';
+import { Fullpage, FullpageW } from '../../styles/Fullpage';
+import LoginForm from './LoginForm';
+import { HeaderLogin, LoginSection, LoginUserWrapper } from './LoginUserStyles';
+import { ReactComponent as LoresLogo } from "../../assets/logofull.svg"
 
 const LoginUser = () => {
-    const { setUserForm, userForm, loginWithCredentials } = useContext(LoginUserContext);
 
     return (
-        <form onSubmit={(e) => loginWithCredentials(e)}>
-            <label htmlFor="username">Nome de usuário</label>
-            <input type="name" name="name" id="name" onChange={(e) => setUserForm({ ...userForm, ["username"]: e.target.value })} />
+        <>
+            <LoginUserWrapper>
+                <Content maxWidth={false} direction="row">
+                    <Fullpage color={MAIN_COLOR}>
+                        <Content maxWidth={true}>
+                            <LoresLogo />
+                        </Content>
+                    </Fullpage>
 
-            <label htmlFor="password">Senha</label>
-            <input type="password" name="password" id="password" onChange={(e) => setUserForm({ ...userForm, ["password"]: e.target.value })} />
+                    <Fullpage color={WHITE_COLOR}>
+                        <Content maxWidth={true}>
+                            <LoginSection>
+                                <HeaderLogin>
+                                    <h3>Login</h3>
+                                    <DotContainer>
+                                        <Dot color={MAIN_COLOR} />
+                                        <Dot color={SEC_COLOR} />
+                                    </DotContainer>
+                                </HeaderLogin>
+                                <LoginForm />
+                            </LoginSection>
+                        </Content>
+                    </Fullpage>
 
-            <button type="submit">Entrar</button>
-        </form>
+                </Content>
+            </LoginUserWrapper >
+        </>
     )
 }
 

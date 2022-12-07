@@ -14,7 +14,7 @@ const Home = () => {
         <>
             <HomeWrapper>
                 <Fullpage color={MAIN_COLOR}>
-                    <Content direction="column" >
+                    <Content maxWidth={true} direction="column" >
                         <LoresLogo />
                         <Button onClick={() => navigate("/register")}>Cadastrar usuário</Button>
                         <Button onClick={() => navigate("/login")}>Login</Button>

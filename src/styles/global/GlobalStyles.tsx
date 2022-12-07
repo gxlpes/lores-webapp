@@ -1,5 +1,10 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
-import { FONT_COLOR, GREY_COLOR } from "../constants/colors";
+import { FONT_COLOR, GREY_COLOR, MAIN_COLOR } from "../constants/colors";
+
+interface PropsStyles {
+  shadow: boolean;
+  padding: boolean;
+}
 
 export default createGlobalStyle`
 
@@ -14,20 +19,22 @@ export default createGlobalStyle`
 }
 
 h1 {
-        font-size: var(--fs-xxl);
-        font-weight: 700;
+    font-size: var(--fs-xxl);
+    font-weight: 700;
     }
 
 h2 {
     font-size: var(--fs-xl);
     font-weight: 700;
-
 }
 
 h3 {
     font-size: var(--fs-lg);
     font-weight: 700;
+}
 
+input:focus {
+  outline: 2px solid ${MAIN_COLOR}
 }
 
 
@@ -42,6 +49,7 @@ h3 {
   a {
     color: inherit;
   }
+
 }
 
 body {
@@ -51,9 +59,10 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-input[type=radio] { 
-    background:pink !important;
+button[type=submit] { 
+    margin-top: 3rem;
 }
+
 
 `;
 
@@ -88,15 +97,20 @@ export const Label = styled.label`
     display: flex;
     gap: 1rem;
 
-    :first-of-type{
-      margin-block: 0.5rem 0.5rem;
-    }
-
-    :last-of-type {
-      margin-block: 0.5rem 2rem; 
+    :first-of-type {
+      margin-block: 0rem 0.5rem;
     }
 `;
 
+export const Form = styled.form<PropsStyles>`
+    display: flex;
+    flex-direction: column;
+    animation: upAppear 0.3s ease-in-out;
+    padding: ${(props) => props.padding ? "4rem" : "1rem"};
+    box-shadow: ${((props) => props.shadow ? "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" : undefined)};
+    background-color: ${(props) => props.color};
+    border-radius: ${((props) => props.shadow ? "5px" : undefined)};
+`
 
 
 export const opacityAppear = keyframes`
