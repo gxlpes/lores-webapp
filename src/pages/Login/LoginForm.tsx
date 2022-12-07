@@ -10,12 +10,12 @@ const LoginForm = () => {
         <Form padding={false} shadow={false} color={WHITE_COLOR} onSubmit={(e) => loginWithCredentials(e)}>
 
             <Label htmlFor="username">Nome de usuário</Label>
-            <Input type="name" name="name" id="name" onChange={(e) => setUserForm({ ...userForm, ["username"]: e.target.value })} />
+            <Input type="name" name="name" id="name" required onChange={(e) => setUserForm({ ...userForm, ["username"]: e.target.value })} />
 
             <Label htmlFor="password">Senha</Label>
-            <Input type="password" name="password" id="password" onChange={(e) => setUserForm({ ...userForm, ["password"]: e.target.value })} />
+            <Input type="password" name="password" id="password" required onChange={(e) => setUserForm({ ...userForm, ["password"]: e.target.value })} />
 
-            <Button type="submit">Entrar</Button>
+            <Button className={Object.keys(userForm).length == 2 ? "valid" : undefined} type="submit">Entrar</Button>
         </Form>
     )
 }

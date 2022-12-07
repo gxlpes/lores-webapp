@@ -10,11 +10,11 @@ const RegisterForm = () => {
         <Form padding={true} shadow={true} color={WHITE_COLOR} onSubmit={(e) => registerWithCredentials(e)}>
 
             <Label htmlFor="name">Nome de usuário</Label>
-            <Input type="name" name="name" id="name" onChange={(e) => setUserForm({ ...userForm, ["username"]: e.target.value })}
+            <Input type="name" name="name" id="name" pattern="(?=\\s*\\S).*$)" onChange={(e) => setUserForm({ ...userForm, ["username"]: e.target.value })}
             />
 
             <Label htmlFor="password">Senha</Label>
-            <Input type="password" name="password" id="password" onChange={(e) => setUserForm({ ...userForm, ["password"]: e.target.value })} />
+            <Input type="password" name="password" id="password" pattern="(?=\\s*\\S).*$)" onChange={(e) => setUserForm({ ...userForm, ["password"]: e.target.value })} />
 
             <Label htmlFor="retypepassword">Redigite a sua senha</Label>
             <Input type="password" name="retypepassword" id="retypepassword" onChange={(e) => setUserForm({ ...userForm, ["retypePassword"]: e.target.value })} />
@@ -30,7 +30,7 @@ const RegisterForm = () => {
             </Label>
 
 
-            <Button>Cadastrar</Button>
+            <Button type="submit" className={Object.keys(userForm).length == 4 ? "valid" : undefined}>Cadastrar</Button>
 
         </Form>
     )

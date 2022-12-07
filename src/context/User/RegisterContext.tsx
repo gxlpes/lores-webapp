@@ -15,7 +15,13 @@ export const RegisterUserContextProvider = ({ children }: IChildren) => {
     const registerWithCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let response = await userService.registerUser(userForm);
-        if (response?.status == 200) navigate("/login")
+        console.log(response);
+
+        if (response?.data != "Usuário já cadastrado.") {
+            navigate("/login");
+        } else {
+            window.alert("Usuário já cadastrado!");
+        }
     }
 
     return (

@@ -16,7 +16,7 @@ export const HeaderRegister = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 7rem;
+    gap: 15rem;
 
     color: ${WHITE_COLOR};
   

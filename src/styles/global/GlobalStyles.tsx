@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
-import { FONT_COLOR, GREY_COLOR, MAIN_COLOR } from "../constants/colors";
+import { FONT_COLOR, GREY_COLOR, MAIN_COLOR, WHITE_COLOR } from "../constants/colors";
 
 interface PropsStyles {
   shadow: boolean;
@@ -48,6 +48,7 @@ input:focus {
 
   a {
     color: inherit;
+    text-decoration: none;
   }
 
 }
@@ -60,9 +61,17 @@ body {
 }
 
 button[type=submit] { 
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
+label[for=admin] {
+  margin-block: 1rem 2rem;
+}
+
+.valid {
+      background-color: ${MAIN_COLOR};
+      color: ${WHITE_COLOR};
+    }
 
 `;
 
@@ -81,6 +90,8 @@ export const Button = styled.button`
         opacity: 0.5;
     }
 `;
+
+
 
 export const Input = styled.input`
     background-color: ${GREY_COLOR};
