@@ -1,7 +1,6 @@
 import { PersonPayload } from "./PersonPayload";
 
-export interface DentistPayload {
+export interface PatientPayload {
   id?: string;
-  croNumber: string;
   person: PersonPayload;
 }

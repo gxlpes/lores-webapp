@@ -11,6 +11,7 @@ import { RolesName } from "../domain/enum/RolesName";
 import Layout from "../layout/Layout";
 import Appointments from "../pages/Appointments/Appointments";
 import Dentists from "../pages/Dentists/Dentists";
+import DentistsForm from "../pages/Dentists/DentistsForm";
 
 import ErrorPage from "../pages/Error/Error";
 import Home from '../pages/Home/Home';
@@ -53,6 +54,12 @@ const AppRoutes = () => {
                             <DentistContextProvider>
                                 <Dentists />
                             </DentistContextProvider>} />
+
+                        <Route path={DENTISTS_PAGE_ENDPOINT + "/form/:id"} element={
+                            <DentistContextProvider>
+                                <DentistsForm />
+                            </DentistContextProvider>}>
+                        </Route>
 
                         <Route path={SPECIALTY_PAGE_ENDPOINT} element={
                             <SpecialtyContextProvider>

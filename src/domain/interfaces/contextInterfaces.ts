@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { AppointmentPayload } from "../payload/AppointmentPayload";
 import { DentistPayload } from "../payload/DentistPayload";
-import { PatientPayload, PersonPayload } from "../payload/PersonPayload";
+import { PatientPayload } from "../payload/PatientPayload";
 import { SpecialtyPayload } from "../payload/SpecialtyPayload";
 import { TreatmentPayload } from "../payload/TreatmentPayload";
 import { LoginPayload, RegisterPayload } from "../payload/UserPayload";
@@ -30,9 +30,10 @@ export interface IPatient extends IServiceMethods {
 }
 
 export interface IDentist extends IServiceMethods {
-  allDentists: DentistPayload[] | string[];
+  allDentists: any;
   formDentist: DentistPayload;
   setFormDentist: Dispatch<SetStateAction<DentistPayload>>;
+  createNewDentist: () => void;
 }
 
 export interface ISpecialty extends IServiceMethods {

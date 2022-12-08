@@ -1,6 +1,6 @@
 import { axiosPrivate } from "../api/axios";
 import { PATIENTS_PAGE_ENDPOINT } from "../common/constants";
-import { PatientPayload } from "../domain/payload/PersonPayload";
+import { PatientPayload } from "../domain/payload/PatientPayload";
 
 export default class UserService {
   public async getAllPatients() {
@@ -28,6 +28,14 @@ export default class UserService {
     }
   }
 
+  public async deletePatient(id: string) {
+    try {
+      return await axiosPrivate.delete(PATIENTS_PAGE_ENDPOINT + "/" + id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async updatePatient(id: string, formPatient: PatientPayload) {
     try {
       let person = {
@@ -35,13 +43,6 @@ export default class UserService {
       };
 
       return await axiosPrivate.put(PATIENTS_PAGE_ENDPOINT + "/" + id, person);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  public async deletePatient(id: string) {
-    try {
-      return await axiosPrivate.delete(PATIENTS_PAGE_ENDPOINT + "/" + id);
     } catch (error) {
       console.log(error);
     }

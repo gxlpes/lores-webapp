@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IDentist } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { DentistPayload } from "../domain/payload/DentistPayload";
@@ -7,10 +8,11 @@ import DentistService from "../services/DentistService";
 export const DentistContext = createContext<IDentist>({} as IDentist);
 
 export const DentistContextProvider = ({ children }: IChildren) => {
-    const dentistService = new DentistService();
-    const [allDentists, setAllDentists] = useState<DentistPayload[] | string[]>([]);
     const [formDentist, setFormDentist] = useState<DentistPayload>({} as DentistPayload)
+    const [allDentists, setAllDentists] = useState<DentistPayload[] | string[]>([]);
+    const dentistService = new DentistService();
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     const getAllMethodItems = async () => {
         let response = await dentistService.getAllDentists();
@@ -37,6 +39,27 @@ export const DentistContextProvider = ({ children }: IChildren) => {
         console.log(response);
     }
 
+    const updateMethodItem = async (id: string) => {
+        setFormDentist({} as DentistPayload);
+        let response = await dentistService.getDentist(id);
+        console.log(response!.data);
+
+        if (response?.data) {
+            setFormDentist(response.data);
+            navigate(`/patients/form/${id}`)
+        }
+    }
+
+    const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
+        e.preventDefault();
+        let response = await dentistService.updateDentist(location, formDentist);
+    }
+
+    const createNewDentist = () => {
+        setFormDentist({} as DentistPayload);
+        navigate("/patients/form/1");
+    }
+
     useEffect((() => {
         getAllMethodItems();
     }), [])
@@ -48,7 +71,8 @@ export const DentistContextProvider = ({ children }: IChildren) => {
             getAllMethodItems,
             setFormDentist,
             formDentist,
-            saveMethodItem
+            saveMethodItem,
+            createNewDentist
         }}>
             <>
                 {loading ? <p>loading</p>

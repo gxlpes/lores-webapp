@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPatient } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
-import { PatientPayload } from "../domain/payload/PersonPayload";
+import { PatientPayload } from "../domain/payload/PatientPayload";
 import PatientService from "../services/PatientService";
 import UserService from "../services/UserService";
 import { LoginUserContext } from "./User/LoginContext";
@@ -10,12 +10,12 @@ import { LoginUserContext } from "./User/LoginContext";
 export const PatientContext = createContext<IPatient>({} as IPatient);
 
 export const PatientContextProvider = ({ children }: IChildren) => {
+    const [formPatient, setFormPatient] = useState<PatientPayload>({} as PatientPayload)
+    const [allPatients, setAllPatients] = useState<PatientPayload[]>();
     const { userForm } = useContext(LoginUserContext);
+    const [loading, setLoading] = useState(true);
     const patientService = new PatientService();
     const userService = new UserService();
-    const [allPatients, setAllPatients] = useState<PatientPayload[]>();
-    const [formPatient, setFormPatient] = useState<PatientPayload>({} as PatientPayload)
-    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const getAllMethodItems = async () => {
