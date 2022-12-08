@@ -19,6 +19,7 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
         if (response?.status == 200) {
             setAllTreatments(response.data);
             setLoading(false);
+            console.log(response);
         }
     }
 

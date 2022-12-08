@@ -12,6 +12,14 @@ export default class AppointmentService {
     }
   }
 
+  public async getAppointment(id: string) {
+    try {
+      return await axiosPrivate.get(APPOINTMENTS_PAGE_ENDPOINT + "/" + id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async saveAppointment(formAppointment: AppointmentPayload) {
     try {
       return await axiosPrivate.post(APPOINTMENTS_PAGE_ENDPOINT, formAppointment);
@@ -23,6 +31,14 @@ export default class AppointmentService {
   public async deleteAppointment(id: string) {
     try {
       return await axiosPrivate.delete(APPOINTMENTS_PAGE_ENDPOINT + "/" + id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateAppointment(id: string, formAppointment: AppointmentPayload) {
+    try {
+      return await axiosPrivate.put(APPOINTMENTS_PAGE_ENDPOINT + "/" + id, formAppointment);
     } catch (error) {
       console.log(error);
     }

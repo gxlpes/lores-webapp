@@ -10,6 +10,7 @@ import { LayoutProfile } from "../domain/enum/LayoutProfile";
 import { RolesName } from "../domain/enum/RolesName";
 import Layout from "../layout/Layout";
 import Appointments from "../pages/Appointments/Appointments";
+import AppointmentsForm from "../pages/Appointments/AppointmentsForm";
 import Dentists from "../pages/Dentists/Dentists";
 import DentistsForm from "../pages/Dentists/DentistsForm";
 
@@ -87,6 +88,11 @@ const AppRoutes = () => {
                         <Route path={APPOINTMENTS_PAGE_ENDPOINT} element={
                             <AppointmentContextProvider>
                                 <Appointments />
+                            </AppointmentContextProvider>} />
+
+                        <Route path={APPOINTMENTS_PAGE_ENDPOINT + "/form/:id"} element={
+                            <AppointmentContextProvider>
+                                <AppointmentsForm />
                             </AppointmentContextProvider>} />
 
 

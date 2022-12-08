@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IAppointment } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { AppointmentPayload } from "../domain/payload/AppointmentPayload";
@@ -11,6 +12,7 @@ export const AppointmentContextProvider = ({ children }: IChildren) => {
     const [allAppointments, setAllAppointments] = useState<AppointmentPayload[] | string[]>([]);
     const [formAppointment, setFormAppointment] = useState<AppointmentPayload>({} as AppointmentPayload)
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     const getAllMethodItems = async () => {
         let response = await appointmentService.getAllAppointments();
@@ -28,15 +30,32 @@ export const AppointmentContextProvider = ({ children }: IChildren) => {
         e.preventDefault();
         console.log("form", formAppointment);
         let response = await appointmentService.saveAppointment(formAppointment);
-
-        // if (response?.status == 200) {
-        //     window.location.href = "/main";
-        // }
     }
 
     const deleteMethodItem = async (id: string) => {
         let response = await appointmentService.deleteAppointment(id);
         console.log(response);
+    }
+
+    const updateMethodItem = async (id: string) => {
+        setFormAppointment({} as AppointmentPayload);
+        let response = await appointmentService.getAppointment(id);
+        console.log(response!.data);
+
+        if (response?.data) {
+            setFormAppointment(response.data);
+            navigate(`/appointments/form/${id}`)
+        }
+    }
+
+    const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
+        e.preventDefault();
+        let response = await appointmentService.updateAppointment(location, formAppointment);
+    }
+
+    const createNewAppointment = () => {
+        setFormAppointment({} as AppointmentPayload);
+        navigate("/appointments/form/new");
     }
 
     useEffect((() => {
@@ -50,7 +69,10 @@ export const AppointmentContextProvider = ({ children }: IChildren) => {
             getAllMethodItems,
             setFormAppointment,
             formAppointment,
-            saveMethodItem
+            saveMethodItem,
+            updateMethodItem,
+            saveUpdatedMethodItem,
+            createNewAppointment
         }}>
             <>
                 {loading ? <p>loading</p>

@@ -54,5 +54,5 @@ export interface IAppointment extends IServiceMethods {
   allAppointments: any;
   formAppointment: AppointmentPayload;
   setFormAppointment: Dispatch<SetStateAction<AppointmentPayload>>;
-  createNewAppointment?: () => void;
+  createNewAppointment: () => void;
 }

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
-import { RowHeader, Row } from '../../components/Row/Row';
+import { Row, RowHeader } from '../../components/Row/Row';
 import Subheader from '../../components/Subheader/Subheader';
 import { DentistContext } from '../../context/DentistContext';
 import { Dentist } from '../../domain/interfaces/entities/DentistInterface';
@@ -9,7 +9,6 @@ import { WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
 import { Fullpage } from '../../styles/Fullpage';
 import { PatientsWrapper } from '../Patients/PatientsStyles';
-import FormDentist from './DentistsForm';
 
 const Dentists = () => {
     const { allDentists, deleteMethodItem, updateMethodItem, createNewDentist } = useContext(DentistContext);

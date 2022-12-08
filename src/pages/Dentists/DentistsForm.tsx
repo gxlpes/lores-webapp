@@ -5,12 +5,14 @@ import { WHITE_COLOR } from '../../styles/constants/colors'
 import { Label, Input, Button, Form } from '../../styles/global/GlobalStyles'
 
 const DentistsForm = () => {
-    const { formDentist, setFormDentist, saveMethodItem, saveUpdatedMethodItem } = useContext(DentistContext)
     const location = useLocation();
     const afterLastSlash = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    const { formDentist, setFormDentist, saveMethodItem, saveUpdatedMethodItem } = useContext(DentistContext)
+
 
     return (
-        <Form padding={true} width={"100vw"} shadow={false} color={WHITE_COLOR} onSubmit={(e) => formDentist.id ? saveUpdatedMethodItem!(e, afterLastSlash) : saveMethodItem(e)}>
+        <Form padding={true} width={"100vw"} shadow={false} color={WHITE_COLOR}
+            onSubmit={(e) => formDentist.id ? saveUpdatedMethodItem!(e, afterLastSlash) : saveMethodItem(e)}>
             <>
                 <Label htmlFor="fullName">Número CRO</Label>
                 <Input type="number" name="fullName" id="fullName" onChange={(e) => setFormDentist({ ...formDentist, croNumber: e.target.value })} />

@@ -1,43 +1,39 @@
 import { useContext } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import { FaEdit } from 'react-icons/fa';
+import { Row, RowHeader } from '../../components/Row/Row';
+import Subheader from '../../components/Subheader/Subheader';
 import { AppointmentContext } from '../../context/AppointmentContext';
+import { WHITE_COLOR } from '../../styles/constants/colors';
+import { Content } from '../../styles/Content';
+import { Fullpage } from '../../styles/Fullpage';
 
 const Appointments = () => {
-    const { allAppointments, saveMethodItem, setFormAppointment, formAppointment, deleteMethodItem } = useContext(AppointmentContext);
+    const { allAppointments, saveMethodItem, setFormAppointment, updateMethodItem, createNewAppointment, formAppointment, deleteMethodItem } = useContext(AppointmentContext);
     console.log(allAppointments);
     return (
         <>
-            <form onSubmit={(e) => saveMethodItem(e)}>
-                <>
-                    <label htmlFor="idDentist">Dentista</label>
-                    <input type="text" name="idDentist" id="idDentist" onChange={(e) => setFormAppointment({ ...formAppointment, dentist: { ...formAppointment.dentist, id: e.target.value } })} />
+            <Fullpage color={WHITE_COLOR}>
+                <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
+                    <Subheader createNew={createNewAppointment} />
+                    <RowHeader>
+                        <p>Nome</p>
+                    </RowHeader>
 
-                    <label htmlFor="idPatient">Paciente</label>
-                    <input type="text" name="idPatient" id="idPatient" onChange={(e) => setFormAppointment({ ...formAppointment, patient: { ...formAppointment.patient, id: e.target.value } })} />
+                    {allAppointments != "No appointments were found" ? (allAppointments.map((el: any) => (
+                        <>
+                            <Row>
+                                <p>a</p>
+                                <Content maxWidth={false}>
+                                    <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                    <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                </Content>
+                            </Row>
+                        </>
+                    ))) : (<p>Sem consultas</p>)}
 
-                    <label htmlFor="idAppointment">Tratamento</label>
-                    <input type="text" name="idAppointment" id="idAppointment" onChange={(e) => setFormAppointment({ ...formAppointment, treatment: { ...formAppointment.treatment, id: e.target.value } })} />
-
-                    <label htmlFor="idAppointments">Data</label>
-                    <input type="date" name="idDentist" id="idDentist" onChange={(e) => setFormAppointment({ ...formAppointment, dateAppointment: e.target.value })} />
-
-                    <label htmlFor="reason">Razão</label>
-                    <input type="text" name="reason" id="reason" onChange={(e) => setFormAppointment({ ...formAppointment, reason: e.target.value })} />
-
-                    <button type="submit">Salvar</button>
-                </>
-            </form>
-
-            {/* {
-                typeof allAppointments == "string" ? (<p>Opa, sem especialidade</p>) : (<>
-                    {
-                        allAppointments!.map((el: any) => (
-                            <>
-                                <p>{el.title}</p>
-                                <a style={{ cursor: "pointer" }} onClick={() => deleteMethodItem(el.id)}>Excluir</a>
-                            </>
-                        ))
-                    }</>)
-            } */}
+                </Content>
+            </Fullpage>
         </>
     )
 }

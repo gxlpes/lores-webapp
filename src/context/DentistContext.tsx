@@ -57,7 +57,7 @@ export const DentistContextProvider = ({ children }: IChildren) => {
 
     const createNewDentist = () => {
         setFormDentist({} as DentistPayload);
-        navigate("/patients/form/1");
+        navigate("/patients/form/new");
     }
 
     useEffect((() => {
