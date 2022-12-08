@@ -26,6 +26,7 @@ export interface IPatient extends IServiceMethods {
   allPatients: any;
   formPatient: PersonPayload;
   setFormPatient: Dispatch<SetStateAction<PersonPayload>>;
+  createNewPatient: () => void;
 }
 
 export interface IDentist extends IServiceMethods {

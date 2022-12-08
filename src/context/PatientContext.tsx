@@ -1,4 +1,6 @@
+import { log } from "console";
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IPatient } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { PersonPayload } from "../domain/payload/PersonPayload";
@@ -11,6 +13,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
     const [allPatients, setAllPatients] = useState<PersonPayload[]>();
     const [formPatient, setFormPatient] = useState<PersonPayload>({} as PersonPayload)
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     const getAllMethodItems = async () => {
         let response = await patientService.getAllPatients();
@@ -27,7 +30,23 @@ export const PatientContextProvider = ({ children }: IChildren) => {
 
     const deleteMethodItem = async (id: string) => {
         let response = await patientService.deletePatient(id);
-        console.log(response);
+        document.location.reload();
+    }
+
+
+    const updateMethodItem = async (id: string) => {
+        setFormPatient({} as PersonPayload);
+        let response = await patientService.getPatient(id);
+        console.log(response!.data);
+        if (response?.data) {
+            setFormPatient(response.data);
+            navigate(`/patients/form/${id}`)
+        }
+    }
+
+    const createNewPatient = () => {
+        setFormPatient({} as PersonPayload);
+        navigate("/patients/form/1");
     }
 
     useEffect((() => {
@@ -41,7 +60,10 @@ export const PatientContextProvider = ({ children }: IChildren) => {
             setFormPatient,
             saveMethodItem,
             deleteMethodItem,
-            getAllMethodItems
+            updateMethodItem,
+            getAllMethodItems,
+
+            createNewPatient
         }}>
             <>
                 {loading ? <p>loading</p>

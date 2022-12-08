@@ -17,6 +17,7 @@ import Home from '../pages/Home/Home';
 import LoginUser from '../pages/Login/LoginUser';
 import Main from "../pages/Main/Main";
 import Patients from "../pages/Patients/Patients";
+import PatientsForm from "../pages/Patients/PatientsForm";
 import RegisterUser from '../pages/Register/RegisterUser';
 import Specialties from "../pages/Specialties/Specialties";
 import Treatments from "../pages/Treatments/Treatments";
@@ -39,7 +40,14 @@ const AppRoutes = () => {
                         <Route path={PATIENTS_PAGE_ENDPOINT} element={
                             <PatientContextProvider>
                                 <Patients />
-                            </PatientContextProvider>} />
+                            </PatientContextProvider>}>
+                        </Route>
+
+                        <Route path={PATIENTS_PAGE_ENDPOINT + "/form/:id"} element={
+                            <PatientContextProvider>
+                                <PatientsForm />
+                            </PatientContextProvider>}>
+                        </Route>
 
                         <Route path={DENTISTS_PAGE_ENDPOINT} element={
                             <DentistContextProvider>

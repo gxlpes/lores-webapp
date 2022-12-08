@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MAIN_PAGE_ENDPOINT } from "../../common/constants";
 import { saveLocalStorage } from "../../common/localStorage";
+import { capitalizeFirstLetter } from "../../common/setFirstCapitalLetter";
 import { ILoginUser } from "../../domain/interfaces/contextInterfaces";
 import { IChildren } from "../../domain/interfaces/reactInterfaces";
 import { LoginPayload } from "../../domain/payload/UserPayload";
@@ -19,7 +20,8 @@ export const LoginUserContextProvider = ({ children }: IChildren) => {
         e.preventDefault()
         let response = await userService.loginUser(userForm);
         if (response?.status == 200) navigate(MAIN_PAGE_ENDPOINT);
-        saveLocalStorage(response?.data);
+        saveLocalStorage("auth", response?.data);
+        saveLocalStorage("username", capitalizeFirstLetter(userForm.username));
         return setAuth(response?.data)
     }
 

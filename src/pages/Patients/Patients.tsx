@@ -1,76 +1,38 @@
 import { useContext } from 'react';
+import { Row } from '../../components/Row/Row';
 import { PatientContext } from '../../context/PatientContext';
+import { Patient } from '../../domain/interfaces/entities/PatientInterface';
+import { Content } from '../../styles/Content';
+import PatientsForm from './PatientsForm';
+import { AiFillDelete } from "react-icons/ai"
+import { FaEdit } from "react-icons/fa"
+import { Button } from '../../styles/global/GlobalStyles';
+import { useNavigate } from 'react-router-dom';
 
 const Patients = () => {
-    const { allPatients, setFormPatient, formPatient, saveMethodItem } = useContext(PatientContext);
+    const { allPatients, deleteMethodItem, updateMethodItem, createNewPatient } = useContext(PatientContext);
 
     return (
         <>
-            <form onSubmit={(e) => saveMethodItem(e)}>
-                <>
-                    <label htmlFor="fullName">Nome completo</label>
-                    <input type="name" name="fullName" id="fullName" onChange={(e) => setFormPatient({ ...formPatient, ["fullName"]: e.target.value })} />
-
-                    <label htmlFor="birthdate">Nascimento</label>
-                    <input type="date" name="birthdate" id="birthdate" onChange={(e) => setFormPatient({ ...formPatient, ["birthdate"]: e.target.value })} />
-
-                    <label htmlFor="cpfNumber">CPF</label>
-                    <input type="number" name="cpfNumber" id="cpfNumber" onChange={(e) => setFormPatient({ ...formPatient, ["cpfNumber"]: e.target.value })} />
-
-                    <label htmlFor="telephoneNumber">Celular</label>
-                    <input type="number" name="telephoneNumber" id="telephoneNumber" onChange={(e) => setFormPatient({ ...formPatient, ["telephoneNumber"]: e.target.value })} />
-
-                    <label htmlFor="emailAddress">Email</label>
-                    <input type="email" name="emailAddress" id="emailAddress" onChange={(e) => setFormPatient({ ...formPatient, ["emailAddress"]: e.target.value })} />
-
-                    <label htmlFor="mainAddress">Endereço</label>
-                    <input type="text" name="mainAddress" id="mainAddress" onChange={(e) => setFormPatient({
-                        ...formPatient, address: {
-                            ...formPatient.address, mainAddress: e.target.value
-                        }
-                    })} />
-
-                    <label htmlFor="numberAddress">Número</label>
-                    <input type="text" name="numberAddress" id="numberAddress" onChange={(e) => setFormPatient({
-                        ...formPatient, address: {
-                            ...formPatient.address, numberAddress: e.target.value
-                        }
-                    })} />
-
-                    <label htmlFor="neighborHood">Bairro</label>
-                    <input type="text" name="neighborHood" id="neighborHood" onChange={(e) => setFormPatient({
-                        ...formPatient, address: {
-                            ...formPatient.address, neighborHood: e.target.value
-                        }
-                    })} />
-
-                    <label htmlFor="complementInfo">Complemento</label>
-                    <input type="text" name="complementInfo" id="complementInfo" onChange={(e) => setFormPatient({
-                        ...formPatient, address: {
-                            ...formPatient.address, complementInfo: e.target.value
-                        }
-                    })} />
-
-                    <label htmlFor="zipCode">CEP</label>
-                    <input type="text" name="zipCode" id="zipCode" onChange={(e) => setFormPatient({
-                        ...formPatient, address: {
-                            ...formPatient.address, zipCode: e.target.value
-                        }
-                    })} />
-
-                    <button type="submit">Salvar</button>
-                </>
-            </form>
-
-            {
-                allPatients.map((el: any) => (
-                    <>
-                        <p>{el.person.fullName}</p>
-                        <p>{el.id}</p>
-                    </>
-                ))
-            }
-
+            <Content maxWidth={false} direction="column" align='flex-start' justify='center'>
+                <Button onClick={() => createNewPatient()}>Cadastrar</Button>
+                {
+                    allPatients.map((el: Patient) => (
+                        <>
+                            <Row>
+                                <p>{el.id}</p>
+                                <p>{el.person.fullName}</p>
+                                <p>{el.person.cpfNumber}</p>
+                                <p>{el.person.birthdate}</p>
+                                <p>{el.person.telephoneNumber}</p>
+                                <p>{el.person.emailAddress}</p>
+                                <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                            </Row>
+                        </>
+                    ))
+                }
+            </Content>
         </>
     )
 }

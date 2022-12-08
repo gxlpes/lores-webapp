@@ -4,8 +4,6 @@ import Header from "../components/Header/Header"
 import { LayoutProfile } from "../domain/enum/LayoutProfile"
 import { LayoutProps } from "../domain/props/LayoutProps"
 
-
-
 const Layout = ({ layoutProfile }: LayoutProps) => {
     return (
         <>

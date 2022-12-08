@@ -1,14 +1,18 @@
-export interface PersonPayload {
-  person: any;
+export interface Patient {
+  id: string;
+  person: Person;
+}
+
+export interface Person {
   fullName: string;
   birthdate: string;
   cpfNumber: string;
   telephoneNumber: string;
   emailAddress: string;
-  address: AddressPayload;
+  address: Address;
 }
 
-export interface AddressPayload {
+export interface Address {
   mainAddress: string;
   numberAddress: string;
   neighborHood: string;

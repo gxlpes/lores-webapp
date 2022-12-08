@@ -12,7 +12,7 @@ export const HeaderLogin = styled.div`
   justify-content: space-between;
   padding-inline: 1rem;
 
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   color: ${FONT_COLOR};
 `;
 

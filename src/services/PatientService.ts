@@ -12,12 +12,19 @@ export default class UserService {
     }
   }
 
+  public async getPatient(id: string) {
+    try {
+      return await axiosPrivate.get(PATIENTS_PAGE_ENDPOINT + "/" + id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async savePatient(formPatient: PersonPayload) {
     try {
       let person = {
         person: formPatient,
       };
-      console.log(person);
 
       return await axiosPrivate.post(PATIENTS_PAGE_ENDPOINT, person);
     } catch (error) {
@@ -25,6 +32,17 @@ export default class UserService {
     }
   }
 
+  public async updatePatient(id: string, formPatient: PersonPayload) {
+    try {
+      let person = {
+        person: formPatient,
+      };
+
+      return await axiosPrivate.put(PATIENTS_PAGE_ENDPOINT + "/" + id, person);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   public async deletePatient(id: string) {
     try {
       return await axiosPrivate.delete(PATIENTS_PAGE_ENDPOINT + "/" + id);

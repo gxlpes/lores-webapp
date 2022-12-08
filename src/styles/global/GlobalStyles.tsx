@@ -61,7 +61,7 @@ body {
 }
 
 button[type=submit] { 
-    margin-top: 1rem;
+    margin-top: 4rem;
 }
 
 label[for=admin] {

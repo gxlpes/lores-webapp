@@ -13,7 +13,7 @@ export const axiosPrivate = axios.create({
 })
 
 axiosPrivate.interceptors.request.use(async (config) => {
-    config.headers!.Authorization = `Bearer ${getLocalStorage("token")}`
+    config.headers!.Authorization = `Bearer ${getLocalStorage("auth", "token")}`
     return config
 })
 

@@ -7,9 +7,16 @@ padding-block: 1rem;
 background-color: ${GREY_COLOR};
 transition: all 0.3s ease-in-out;
 
-a:not(.logo) {
-    color: ${WHITE_COLOR};
-    background-color: ${MAIN_COLOR};
+.dropdown {
+    z-index: 1;
+    position: absolute;
+    text-align: start;
+    top: 80px;
+}
+
+a:not(.logo, .dropdown) {
+    color: ${MAIN_COLOR};
+    font-weight: 700;
     border-radius: 8px;
     padding: 0.8rem 1.5rem 0.8rem 1.5rem;
     transition: all 0.3s ease-in-out;
@@ -22,9 +29,8 @@ a:not(.logo) {
 
 export const ContainerLinks = styled.div`
     display: flex;
-    gap: 4rem;
+    gap: 1.5rem;
     transition: all 0.3s ease-in-out;
-
 `
 
 export const ContainerLogo = styled.div`
