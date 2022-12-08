@@ -21,7 +21,9 @@ import Patients from "../pages/Patients/Patients";
 import PatientsForm from "../pages/Patients/PatientsForm";
 import RegisterUser from '../pages/Register/RegisterUser';
 import Specialties from "../pages/Specialties/Specialties";
+import SpecialtiesForm from "../pages/Specialties/SpecialtiesForm";
 import Treatments from "../pages/Treatments/Treatments";
+import TreatmentsForm from "../pages/Treatments/TreatmentsForm";
 
 
 const AppRoutes = () => {
@@ -66,10 +68,20 @@ const AppRoutes = () => {
                                 <Specialties />
                             </SpecialtyContextProvider>} />
 
+                        <Route path={SPECIALTY_PAGE_ENDPOINT + "/form/:id"} element={
+                            <SpecialtyContextProvider>
+                                <SpecialtiesForm />
+                            </SpecialtyContextProvider>} />
+
 
                         <Route path={TREATMENT_PAGE_ENDPOINT} element={
                             <TreatmentContextProvider>
                                 <Treatments />
+                            </TreatmentContextProvider>} />
+
+                        <Route path={TREATMENT_PAGE_ENDPOINT + "/form/:id"} element={
+                            <TreatmentContextProvider>
+                                <TreatmentsForm />
                             </TreatmentContextProvider>} />
 
                         <Route path={APPOINTMENTS_PAGE_ENDPOINT} element={

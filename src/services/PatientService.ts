@@ -41,7 +41,6 @@ export default class UserService {
       let person = {
         person: formPatient,
       };
-
       return await axiosPrivate.put(PATIENTS_PAGE_ENDPOINT + "/" + id, person);
     } catch (error) {
       console.log(error);

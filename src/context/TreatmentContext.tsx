@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ITreatment } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { TreatmentPayload } from "../domain/payload/TreatmentPayload";
@@ -11,6 +12,7 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
     const [allTreatments, setAllTreatments] = useState<TreatmentPayload[]>();
     const [formTreatment, setFormTreatment] = useState<TreatmentPayload>({} as TreatmentPayload)
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     const getAllMethodItems = async () => {
         let response = await treatmentService.getAllTreatments();
@@ -30,6 +32,27 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
         console.log(response);
     }
 
+    const updateMethodItem = async (id: string) => {
+        setFormTreatment({} as TreatmentPayload);
+        let response = await treatmentService.getTreatment(id);
+        console.log(response!.data);
+
+        if (response?.data) {
+            setFormTreatment(response.data);
+            navigate(`/treatments/form/${id}`)
+        }
+    }
+
+    const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
+        e.preventDefault();
+        let response = await treatmentService.updateTreatment(location, formTreatment);
+    }
+
+    const createNewTreatment = () => {
+        setFormTreatment({} as TreatmentPayload);
+        navigate("/treatments/form/new");
+    }
+
 
     useEffect((() => {
         getAllMethodItems();
@@ -37,13 +60,15 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
 
     return (
         <TreatmentContext.Provider value={{
+            allTreatments,
             formTreatment,
             setFormTreatment,
-            allTreatments,
             deleteMethodItem,
+            updateMethodItem,
             saveMethodItem,
             getAllMethodItems,
-
+            saveUpdatedMethodItem,
+            createNewTreatment
         }}>
             <>
                 {loading ? <p>loading</p>

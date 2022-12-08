@@ -40,16 +40,19 @@ export interface ISpecialty extends IServiceMethods {
   allSpecialties: any;
   formSpecialty: SpecialtyPayload;
   setFormSpecialty: Dispatch<SetStateAction<SpecialtyPayload>>;
+  createNewSpecialty: () => void;
 }
 
 export interface ITreatment extends IServiceMethods {
   allTreatments: any;
   formTreatment: TreatmentPayload;
   setFormTreatment: Dispatch<SetStateAction<TreatmentPayload>>;
+  createNewTreatment: () => void;
 }
 
 export interface IAppointment extends IServiceMethods {
   allAppointments: any;
   formAppointment: AppointmentPayload;
   setFormAppointment: Dispatch<SetStateAction<AppointmentPayload>>;
+  createNewAppointment?: () => void;
 }

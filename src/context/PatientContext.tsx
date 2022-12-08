@@ -33,7 +33,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
 
     const deleteMethodItem = async (id: string) => {
         let response = await patientService.deletePatient(id);
-        // document.location.reload();
+        document.location.reload();
     }
 
 
@@ -55,7 +55,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
 
     const createNewPatient = () => {
         setFormPatient({} as PatientPayload);
-        navigate("/patients/form/1");
+        navigate("/patients/form/new");
     }
 
     useEffect((() => {

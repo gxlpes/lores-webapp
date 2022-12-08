@@ -72,7 +72,9 @@ export const DentistContextProvider = ({ children }: IChildren) => {
             setFormDentist,
             formDentist,
             saveMethodItem,
-            createNewDentist
+            createNewDentist,
+            updateMethodItem,
+            saveUpdatedMethodItem
         }}>
             <>
                 {loading ? <p>loading</p>

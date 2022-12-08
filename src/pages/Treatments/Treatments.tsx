@@ -1,30 +1,45 @@
 import { useContext } from 'react';
-import { DentistContext } from '../../context/DentistContext';
+import { AiFillDelete } from 'react-icons/ai';
+import { FaEdit } from 'react-icons/fa';
+import { RowHeader, Row } from '../../components/Row/Row';
+import Subheader from '../../components/Subheader/Subheader';
 import { TreatmentContext } from '../../context/TreatmentContext';
-import { TreatmentPayload } from '../../domain/payload/TreatmentPayload';
-import FormTreatment from './FormTreatment';
+import { WHITE_COLOR } from '../../styles/constants/colors';
+import { Content } from '../../styles/Content';
+import { Fullpage } from '../../styles/Fullpage';
 
 const Treatments = () => {
-    const { allTreatments, deleteMethodItem } = useContext(TreatmentContext);
+    const { allTreatments, deleteMethodItem, createNewTreatment, updateMethodItem } = useContext(TreatmentContext);
 
     return (
         <>
-            <>
-                <FormTreatment />
-            </>
-            {typeof allTreatments == "string" ? (<p>Opa, sem treatments</p>) : (<>
-                {
-                    allTreatments!.map((el: any) => (
+            <Fullpage color={WHITE_COLOR}>
+                <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
+                    <Subheader createNew={createNewTreatment} />
+
+                    <RowHeader>
+                        <p>Id</p>
+                        <p>Preço</p>
+                        <p>Descrição</p>
+                        <p>Especialidade</p>
+                    </RowHeader>
+
+                    {allTreatments != "No treatments were found" ? (allTreatments!.map((el: any) => (
                         <>
-                            <p>{el.priceAppointment}</p>
-                            <p>{el.procedureName}</p>
-                            <p>{el.fieldOfSpecialty}</p>
-                            <p>{el.id}</p>
-                            <a style={{ cursor: "pointer" }} onClick={() => deleteMethodItem(el.id)}>Excluir</a>
+                            <Row>
+                                <p>{el.id}</p>
+                                <p>{el.priceAppointment}</p>
+                                <p>{el.procedureName}</p>
+                                <p>{el.fieldOfSpecialty}</p>
+                                <Content maxWidth={false}>
+                                    <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                    <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                </Content>
+                            </Row>
                         </>
-                    ))
-                }</>)
-            }
+                    ))) : (<p>Opa, sem tratamentos</p>)}
+                </Content>
+            </Fullpage>
         </>
     )
 }

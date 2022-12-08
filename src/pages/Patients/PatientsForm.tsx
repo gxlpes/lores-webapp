@@ -8,15 +8,14 @@ import { Fullpage } from '../../styles/Fullpage';
 import { Button, Form, Input, Label } from '../../styles/global/GlobalStyles';
 
 const PatientsForm = () => {
-    const { allPatients, setFormPatient, formPatient, saveMethodItem, saveUpdatedMethodItem } = useContext(PatientContext);
     const location = useLocation();
     const afterLastSlash = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
-
-    console.log(formPatient)
+    const { setFormPatient, formPatient, saveMethodItem, saveUpdatedMethodItem } = useContext(PatientContext);
 
     return (
         <Content maxWidth={true} direction="column" align="flex-start" justify="center">
-            <Form padding={true} width={"100vw"} shadow={false} color={WHITE_COLOR} onSubmit={(e) => formPatient.id ? saveUpdatedMethodItem!(e, afterLastSlash) : saveMethodItem(e)}>
+            <Form padding={true} width={"100vw"} shadow={false} color={WHITE_COLOR}
+                onSubmit={(e) => formPatient.id ? saveUpdatedMethodItem!(e, afterLastSlash) : saveMethodItem(e)}>
                 <>
                     <Label htmlFor="fullName">Nome completo</Label>
                     <Input type="name" name="fullName" id="fullName" defaultValue={formPatient.person?.fullName ?? null} onChange={(e) => setFormPatient({ ...formPatient, person: { ...formPatient.person, fullName: e.target.value } })} />

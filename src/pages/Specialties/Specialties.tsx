@@ -1,32 +1,46 @@
 import React, { useContext } from 'react'
+import { AiFillDelete } from 'react-icons/ai';
+import { FaEdit } from 'react-icons/fa';
+import { Row, RowHeader } from '../../components/Row/Row';
+import Subheader from '../../components/Subheader/Subheader';
 import { PatientContext } from '../../context/PatientContext';
 import { SpecialtyContext } from '../../context/SpecialtyContext';
+import { WHITE_COLOR } from '../../styles/constants/colors';
+import { Content } from '../../styles/Content';
+import { Fullpage } from '../../styles/Fullpage';
+import SpecialtiesForm from './SpecialtiesForm';
+import { SpecialtiesWrapper } from './SpecialtiesStyles';
 
 const Specialties = () => {
-    const { allSpecialties, saveMethodItem, setFormSpecialty, formSpecialty, deleteMethodItem } = useContext(SpecialtyContext);
+    const { allSpecialties, updateMethodItem, createNewSpecialty, deleteMethodItem } = useContext(SpecialtyContext);
+    console.log("all", allSpecialties);
 
     return (
         <>
-            <form onSubmit={(e) => saveMethodItem(e)}>
-                <>
-                    <label htmlFor="fullName">Título</label>
-                    <input type="name" name="fullName" id="fullName" onChange={(e) => setFormSpecialty({ ...formSpecialty, ["title"]: e.target.value })} />
+            <SpecialtiesWrapper>
+                <Fullpage color={WHITE_COLOR}>
+                    <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
+                        <Subheader createNew={createNewSpecialty} />
 
-                    <button type="submit">Salvar</button>
-                </>
-            </form>
+                        <RowHeader>
+                            <p>Título</p>
+                        </RowHeader>
 
-            {typeof allSpecialties == "string" ? (<p>Opa, sem especialidade</p>) : (<>
-                {
-                    allSpecialties!.map((el: any) => (
-                        <>
-                            <p>{el.title}</p>
-                            <a style={{ cursor: "pointer" }} onClick={() => deleteMethodItem(el.id)}>Excluir</a>
-                        </>
-                    ))
-                }</>)
-            }
+                        {allSpecialties != "No specialties were found" ? (allSpecialties!.map((el: any) => (
+                            <>
+                                <Row>
+                                    <p>{el.title}</p>
+                                    <Content maxWidth={false}>
+                                        <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                        <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                    </Content>
+                                </Row>
+                            </>
+                        ))) : (<p>Opa, sem especialidade</p>)}
 
+                    </Content>
+                </Fullpage>
+            </SpecialtiesWrapper>
         </>
     )
 }

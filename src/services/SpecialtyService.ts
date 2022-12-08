@@ -11,6 +11,14 @@ export default class SpecialtyService {
     }
   }
 
+  public async getSpecialty(id: string) {
+    try {
+      return await axiosPrivate.get(SPECIALTY_PAGE_ENDPOINT + "/" + id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   public async saveSpecialty(formSpecialty: SpecialtyPayload) {
     try {
       return await axiosPrivate.post(SPECIALTY_PAGE_ENDPOINT, formSpecialty);
@@ -22,6 +30,14 @@ export default class SpecialtyService {
   public async deleteSpecialty(id: string) {
     try {
       return await axiosPrivate.delete(SPECIALTY_PAGE_ENDPOINT + "/" + id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async updateSpecialty(id: string, formSpecialty: SpecialtyPayload) {
+    try {
+      return await axiosPrivate.put(SPECIALTY_PAGE_ENDPOINT + "/" + id, formSpecialty);
     } catch (error) {
       console.log(error);
     }
