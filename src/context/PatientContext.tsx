@@ -1,17 +1,20 @@
-import { log } from "console";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPatient } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
-import { PersonPayload } from "../domain/payload/PersonPayload";
+import { PatientPayload } from "../domain/payload/PersonPayload";
 import PatientService from "../services/PatientService";
+import UserService from "../services/UserService";
+import { LoginUserContext } from "./User/LoginContext";
 
 export const PatientContext = createContext<IPatient>({} as IPatient);
 
 export const PatientContextProvider = ({ children }: IChildren) => {
+    const { userForm } = useContext(LoginUserContext);
     const patientService = new PatientService();
-    const [allPatients, setAllPatients] = useState<PersonPayload[]>();
-    const [formPatient, setFormPatient] = useState<PersonPayload>({} as PersonPayload)
+    const userService = new UserService();
+    const [allPatients, setAllPatients] = useState<PatientPayload[]>();
+    const [formPatient, setFormPatient] = useState<PatientPayload>({} as PatientPayload)
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -30,22 +33,28 @@ export const PatientContextProvider = ({ children }: IChildren) => {
 
     const deleteMethodItem = async (id: string) => {
         let response = await patientService.deletePatient(id);
-        document.location.reload();
+        // document.location.reload();
     }
 
 
     const updateMethodItem = async (id: string) => {
-        setFormPatient({} as PersonPayload);
+        setFormPatient({} as PatientPayload);
         let response = await patientService.getPatient(id);
         console.log(response!.data);
+
         if (response?.data) {
             setFormPatient(response.data);
             navigate(`/patients/form/${id}`)
         }
     }
 
+    const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
+        e.preventDefault();
+        let response = await patientService.updatePatient(location, formPatient);
+    }
+
     const createNewPatient = () => {
-        setFormPatient({} as PersonPayload);
+        setFormPatient({} as PatientPayload);
         navigate("/patients/form/1");
     }
 
@@ -62,7 +71,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
             deleteMethodItem,
             updateMethodItem,
             getAllMethodItems,
-
+            saveUpdatedMethodItem,
             createNewPatient
         }}>
             <>

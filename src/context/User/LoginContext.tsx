@@ -19,10 +19,12 @@ export const LoginUserContextProvider = ({ children }: IChildren) => {
     const loginWithCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         let response = await userService.loginUser(userForm);
-        if (response?.status == 200) navigate(MAIN_PAGE_ENDPOINT);
-        saveLocalStorage("auth", response?.data);
-        saveLocalStorage("username", capitalizeFirstLetter(userForm.username));
-        return setAuth(response?.data)
+        if (response?.status == 200) {
+            navigate(MAIN_PAGE_ENDPOINT);
+            saveLocalStorage("auth", response?.data);
+            saveLocalStorage("username", capitalizeFirstLetter(userForm.username));
+            return setAuth(response?.data)
+        }
     }
 
     return (

@@ -4,6 +4,7 @@ import { FONT_COLOR, GREY_COLOR, MAIN_COLOR, WHITE_COLOR } from "../constants/co
 interface PropsStyles {
   shadow: boolean;
   padding: boolean;
+  width?: string;
 }
 
 export default createGlobalStyle`
@@ -44,7 +45,6 @@ input:focus {
   box-sizing: border-box;
   outline: 0;
   overflow-x: hidden;
-  overflow-y: hidden;
 
   a {
     color: inherit;
@@ -91,8 +91,6 @@ export const Button = styled.button`
     }
 `;
 
-
-
 export const Input = styled.input`
     background-color: ${GREY_COLOR};
     border-radius: 0.3rem;
@@ -121,6 +119,7 @@ export const Form = styled.form<PropsStyles>`
     box-shadow: ${((props) => props.shadow ? "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" : undefined)};
     background-color: ${(props) => props.color};
     border-radius: ${((props) => props.shadow ? "5px" : undefined)};
+    width: ${(props) => props.width ? props.width : undefined}
 `
 
 

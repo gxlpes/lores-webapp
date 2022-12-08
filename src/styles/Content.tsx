@@ -4,14 +4,15 @@ interface PropsStyles {
     direction?: string;
     justify?: string;
     align?: string;
+    height?: boolean
 
     maxWidth: boolean;
 }
 
 export const Content = styled.div<PropsStyles>`
-    height: 100%;
-    max-width: ${(props) => props.maxWidth ? "75rem" : undefined};
+    max-width: ${(props) => props.maxWidth ? "100rem" : undefined};
     margin-inline: auto;
+    height: ${(props) => props.height ? "100%" : undefined};
 
     display: flex;
     flex-direction: ${(props) => props.direction ? props.direction : "center"};

@@ -1,5 +1,9 @@
+export interface PatientPayload {
+  id?: string;
+  person: PersonPayload;
+}
+
 export interface PersonPayload {
-  person: any;
   fullName: string;
   birthdate: string;
   cpfNumber: string;

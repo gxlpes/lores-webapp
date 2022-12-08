@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { AppointmentPayload } from "../payload/AppointmentPayload";
 import { DentistPayload } from "../payload/DentistPayload";
-import { PersonPayload } from "../payload/PersonPayload";
+import { PatientPayload, PersonPayload } from "../payload/PersonPayload";
 import { SpecialtyPayload } from "../payload/SpecialtyPayload";
 import { TreatmentPayload } from "../payload/TreatmentPayload";
 import { LoginPayload, RegisterPayload } from "../payload/UserPayload";
@@ -24,8 +24,8 @@ export interface ILoginUser {
 
 export interface IPatient extends IServiceMethods {
   allPatients: any;
-  formPatient: PersonPayload;
-  setFormPatient: Dispatch<SetStateAction<PersonPayload>>;
+  formPatient: PatientPayload;
+  setFormPatient: Dispatch<SetStateAction<PatientPayload>>;
   createNewPatient: () => void;
 }
 

@@ -1,67 +1,89 @@
 import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { PatientContext } from '../../context/PatientContext';
 import { PersonPayload } from '../../domain/payload/PersonPayload';
+import { WHITE_COLOR } from '../../styles/constants/colors';
+import { Content } from '../../styles/Content';
+import { Fullpage } from '../../styles/Fullpage';
+import { Button, Form, Input, Label } from '../../styles/global/GlobalStyles';
 
 const PatientsForm = () => {
-    const { allPatients, setFormPatient, formPatient, saveMethodItem } = useContext(PatientContext);
+    const { allPatients, setFormPatient, formPatient, saveMethodItem, saveUpdatedMethodItem } = useContext(PatientContext);
+    const location = useLocation();
+    const afterLastSlash = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+
+    console.log(formPatient)
 
     return (
-        <form onSubmit={(e) => saveMethodItem(e)}>
-            <>
-                <label htmlFor="fullName">Nome completo</label>
-                <input type="name" name="fullName" id="fullName" defaultValue={formPatient.person?.fullName ?? null} onChange={(e) => setFormPatient({ ...formPatient, ["fullName"]: e.target.value })} />
+        <Content maxWidth={true} direction="column" align="flex-start" justify="center">
+            <Form padding={true} width={"100vw"} shadow={false} color={WHITE_COLOR} onSubmit={(e) => formPatient.id ? saveUpdatedMethodItem!(e, afterLastSlash) : saveMethodItem(e)}>
+                <>
+                    <Label htmlFor="fullName">Nome completo</Label>
+                    <Input type="name" name="fullName" id="fullName" defaultValue={formPatient.person?.fullName ?? null} onChange={(e) => setFormPatient({ ...formPatient, person: { ...formPatient.person, fullName: e.target.value } })} />
 
-                <label htmlFor="birthdate">Nascimento</label>
-                <input type="date" name="birthdate" id="birthdate" value={formPatient.person?.birthdate ?? null} onChange={(e) => setFormPatient({ ...formPatient, ["birthdate"]: e.target.value })} />
+                    <Label htmlFor="birthdate">Nascimento</Label>
+                    <Input type="date" name="birthdate" id="birthdate" defaultValue={formPatient.person?.birthdate ?? null} onChange={(e) => setFormPatient({ ...formPatient, person: { ...formPatient.person, birthdate: e.target.value } })} />
 
-                <label htmlFor="cpfNumber">CPF</label>
-                <input type="name" name="cpfNumber" id="cpfNumber" value={formPatient.person?.cpfNumber ?? null} onChange={(e) => setFormPatient({ ...formPatient, ["cpfNumber"]: e.target.value })} />
+                    <Label htmlFor="cpfNumber">CPF</Label>
+                    <Input type="name" name="cpfNumber" id="cpfNumber" defaultValue={formPatient.person?.cpfNumber ?? null} onChange={(e) => setFormPatient({ ...formPatient, person: { ...formPatient.person, cpfNumber: e.target.value } })} />
 
-                <label htmlFor="telephoneNumber">Celular</label>
-                <input type="number" name="telephoneNumber" id="telephoneNumber" value={formPatient.person?.telephoneNumber ?? null} onChange={(e) => setFormPatient({ ...formPatient, ["telephoneNumber"]: e.target.value })} />
+                    <Label htmlFor="telephoneNumber">Celular</Label>
+                    <Input type="number" name="telephoneNumber" id="telephoneNumber" defaultValue={formPatient.person?.telephoneNumber ?? null} onChange={(e) => setFormPatient({ ...formPatient, person: { ...formPatient.person, telephoneNumber: e.target.value } })} />
 
-                <label htmlFor="emailAddress">Email</label>
-                <input type="email" name="emailAddress" id="emailAddress" value={formPatient.person?.emailAddress ?? null} onChange={(e) => setFormPatient({ ...formPatient, ["emailAddress"]: e.target.value })} />
+                    <Label htmlFor="emailAddress">Email</Label>
+                    <Input type="email" name="emailAddress" id="emailAddress" defaultValue={formPatient.person?.emailAddress ?? null} onChange={(e) => setFormPatient({ ...formPatient, person: { ...formPatient.person, emailAddress: e.target.value } })} />
 
-                <label htmlFor="mainAddress">Endereço</label>
-                <input type="text" name="mainAddress" id="mainAddress" value={"null"} onChange={(e) => setFormPatient({
-                    ...formPatient, address: {
-                        ...formPatient.address, mainAddress: e.target.value
-                    }
-                })} />
+                    <Label htmlFor="mainAddress">Endereço</Label>
+                    <Input type="text" name="mainAddress" id="mainAddress" defaultValue={formPatient.person?.address?.mainAddress ?? null} onChange={(e) => setFormPatient({
+                        ...formPatient, person: {
+                            ...formPatient.person, address: {
+                                ...formPatient.person.address, mainAddress: e.target.value
+                            }
+                        }
+                    })} />
 
-                <label htmlFor="numberAddress">Número</label>
-                <input type="text" name="numberAddress" id="numberAddress" onChange={(e) => setFormPatient({
-                    ...formPatient, address: {
-                        ...formPatient.address, numberAddress: e.target.value
-                    }
-                })} />
+                    <Label htmlFor="numberAddress">Número</Label>
+                    <Input type="text" name="numberAddress" id="numberAddress" defaultValue={formPatient.person?.address?.numberAddress ?? null} onChange={(e) => setFormPatient({
+                        ...formPatient, person: {
+                            ...formPatient.person, address: {
+                                ...formPatient.person.address, numberAddress: e.target.value
+                            }
+                        }
+                    })} />
 
-                <label htmlFor="neighborHood">Bairro</label>
-                <input type="text" name="neighborHood" id="neighborHood" onChange={(e) => setFormPatient({
-                    ...formPatient, address: {
-                        ...formPatient.address, neighborHood: e.target.value
-                    }
-                })} />
+                    <Label htmlFor="neighborHood">Bairro</Label>
+                    <Input type="text" name="neighborHood" id="neighborHood" defaultValue={formPatient.person?.address?.neighborHood ?? null} onChange={(e) => setFormPatient({
+                        ...formPatient, person: {
+                            ...formPatient.person, address: {
+                                ...formPatient.person.address, neighborHood: e.target.value
+                            }
+                        }
+                    })} />
 
-                <label htmlFor="complementInfo">Complemento</label>
-                <input type="text" name="complementInfo" id="complementInfo" onChange={(e) => setFormPatient({
-                    ...formPatient, address: {
-                        ...formPatient.address, complementInfo: e.target.value
-                    }
-                })} />
+                    <Label htmlFor="complementInfo">Complemento</Label>
+                    <Input type="text" name="complementInfo" id="complementInfo" defaultValue={formPatient.person?.address?.complementInfo ?? null} onChange={(e) => setFormPatient({
+                        ...formPatient, person: {
+                            ...formPatient.person, address: {
+                                ...formPatient.person.address, complementInfo: e.target.value
+                            }
+                        }
+                    })} />
 
-                <label htmlFor="zipCode">CEP</label>
-                <input type="text" name="zipCode" id="zipCode" onChange={(e) => setFormPatient({
-                    ...formPatient, address: {
-                        ...formPatient.address, zipCode: e.target.value
-                    }
-                })} />
+                    <Label htmlFor="zipCode">CEP</Label>
+                    <Input type="text" name="zipCode" id="zipCode" defaultValue={formPatient.person?.address?.zipCode ?? null} onChange={(e) => setFormPatient({
+                        ...formPatient, person: {
+                            ...formPatient.person, address: {
+                                ...formPatient.person.address, zipCode: e.target.value
+                            }
+                        }
+                    })} />
 
-                <button type="submit">Salvar</button>
-            </>
-        </form>)
+                    <Button type="submit">Salvar</Button>
+                </>
+            </Form>
+        </Content>
+
+    )
 }
 
 export default PatientsForm;

@@ -12,9 +12,36 @@ export const Row = styled.div`
 
     p {
         padding: 1rem;
-        width: 15rem;
+        width: 14.6rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis
+    }
+
+    div {
+        padding: 1rem;
+    }
+
+    svg {
+        cursor: pointer;
+        :hover {
+            opacity: 0.5;
+        }
+    }
+`
+
+
+export const RowHeader = styled.div`
+     display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+
+    p {
+        padding: 0rem 1rem 0rem 1rem;
+        width: 14.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bolder;
     }
 `

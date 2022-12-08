@@ -15,13 +15,13 @@ const LoginUser = () => {
             <LoginUserWrapper>
                 <Content maxWidth={false} direction="row">
                     <Fullpage color={MAIN_COLOR}>
-                        <Content maxWidth={true}>
+                        <Content height={true} maxWidth={true}>
                             <LoresLogo />
                         </Content>
                     </Fullpage>
 
                     <Fullpage color={WHITE_COLOR}>
-                        <Content maxWidth={true}>
+                        <Content height={true} maxWidth={true}>
                             <LoginSection>
                                 <HeaderLogin>
                                     <h3>Login</h3>

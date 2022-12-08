@@ -14,7 +14,7 @@ const Header = () => {
             <ul>
                 <Content maxWidth={false} justify={"space-between"}>
                     <ContainerLogo>
-                        <NavLink className="logo" to={"/main"}>
+                        <NavLink className="logo" to={"/login"}>
                             <Logo />
                         </NavLink>
                         <p>{auth == 1 ? "Administrador" : "Usuário"} | {username}</p>
