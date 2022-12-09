@@ -1,9 +1,6 @@
 import { axiosPrivate } from "../api/axios";
 import { DENTISTS_PAGE_ENDPOINT } from "../common/constants";
 import { DentistPayload } from "../domain/payload/DentistPayload";
-import { PersonPayload } from "../domain/payload/PersonPayload";
-import { LoginPayload } from "../domain/payload/UserPayload";
-import FormDentist from "../pages/Dentists/DentistsForm";
 
 export default class DentistService {
   public async getAllDentists() {
@@ -17,6 +14,14 @@ export default class DentistService {
   public async getDentist(id: string) {
     try {
       return await axiosPrivate.get(DENTISTS_PAGE_ENDPOINT + "/" + id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public async getDentistByCro(cro: string) {
+    try {
+      return await axiosPrivate.get(DENTISTS_PAGE_ENDPOINT + "/cro/" + cro);
     } catch (error) {
       console.log(error);
     }
@@ -38,13 +43,9 @@ export default class DentistService {
     }
   }
 
-  public async updateDentist(id: string, FormDentist: DentistPayload) {
+  public async updateDentist(id: string, formDentist: DentistPayload) {
     try {
-      let person = {
-        person: FormDentist,
-      };
-
-      return await axiosPrivate.put(DENTISTS_PAGE_ENDPOINT + "/" + id, person);
+      return await axiosPrivate.put(DENTISTS_PAGE_ENDPOINT + "/" + id, formDentist);
     } catch (error) {
       console.log(error);
     }

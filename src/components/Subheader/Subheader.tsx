@@ -15,10 +15,10 @@ const Subheader = ({ createNew }: Props) => {
         <>
             <SubheaderWrapper>
                 <Button onClick={() => navigate("form/new")}>Cadastrar</Button>
-                <Form padding={false} shadow={false} color={WHITE_COLOR} onSubmit={() => createNew()}>
+                {/* <Form padding={false} shadow={false} color={WHITE_COLOR} onSubmit={() => createNew()}>
                     <Input type="text" />
                     <Button type="submit">Buscar</Button>
-                </Form>
+                </Form> */}
             </SubheaderWrapper>
         </>)
 }

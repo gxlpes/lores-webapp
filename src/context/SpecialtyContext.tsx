@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { responseHandler } from "../api/responseHandler";
 import { ISpecialty } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { SpecialtyPayload } from "../domain/payload/SpecialtyPayload";
@@ -26,11 +27,12 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
     const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let response = await specialtyService.saveSpecialty(formSpecialty);
+        responseHandler(response, "post");
     }
 
     const deleteMethodItem = async (id: string) => {
         let response = await specialtyService.deleteSpecialty(id);
-        console.log(response);
+        responseHandler(response, "delete");
     }
 
     const updateMethodItem = async (id: string) => {
@@ -40,13 +42,14 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
 
         if (response?.data) {
             setFormSpecialty(response.data);
-            navigate(`/patients/form/${id}`)
+            navigate(`/specialties/form/${id}`)
         }
     }
 
     const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
         e.preventDefault();
         let response = await specialtyService.updateSpecialty(location, formSpecialty);
+        responseHandler(response, "put");
     }
 
     const createNewSpecialty = () => {
@@ -67,7 +70,8 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
             saveMethodItem,
             getAllMethodItems,
             createNewSpecialty,
-            saveUpdatedMethodItem
+            saveUpdatedMethodItem,
+            updateMethodItem
         }}>
             <>
                 {loading ? <p>loading</p>

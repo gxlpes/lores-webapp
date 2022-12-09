@@ -10,27 +10,30 @@ import { Fullpage } from '../../styles/Fullpage';
 
 const Appointments = () => {
     const { allAppointments, saveMethodItem, setFormAppointment, updateMethodItem, createNewAppointment, formAppointment, deleteMethodItem } = useContext(AppointmentContext);
-    console.log(allAppointments);
+    console.log(allAppointments, "all appointments");
     return (
         <>
             <Fullpage color={WHITE_COLOR}>
                 <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                     <Subheader createNew={createNewAppointment} />
-                    <RowHeader>
-                        <p>Nome</p>
-                    </RowHeader>
 
-                    {allAppointments != "No appointments were found" ? (allAppointments.map((el: any) => (
+                    {allAppointments != "No appointments were found" ? (
                         <>
-                            <Row>
-                                <p>a</p>
-                                <Content maxWidth={false}>
-                                    <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                    <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                </Content>
-                            </Row>
-                        </>
-                    ))) : (<p>Sem consultas</p>)}
+                            <RowHeader>
+                                <p>Nome</p>
+                            </RowHeader>
+                        </> &&
+                        (allAppointments.map((el: any) => (
+                            <>
+                                <Row>
+                                    <p>a</p>
+                                    <Content maxWidth={false}>
+                                        <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                        <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                    </Content>
+                                </Row>
+                            </>
+                        )))) : (<p>Nenhuma consulta cadastrada</p>)}
 
                 </Content>
             </Fullpage>

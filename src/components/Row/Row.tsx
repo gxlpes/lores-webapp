@@ -8,7 +8,7 @@ export const Row = styled.div`
     display: flex;
     gap: 1rem;
     justify-content: flex-start;
-
+    width: 100%;
 
     p {
         padding: 1rem;
@@ -32,7 +32,7 @@ export const Row = styled.div`
 
 
 export const RowHeader = styled.div`
-     display: flex;
+    display: flex;
     gap: 1rem;
     justify-content: flex-start;
 

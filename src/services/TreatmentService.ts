@@ -19,9 +19,9 @@ export default class TreatmentService {
     }
   }
 
-  public async saveTreatment(formSpecialty: TreatmentPayload) {
+  public async saveTreatment(formTreatment: TreatmentPayload) {
     try {
-      return await axiosPrivate.post(TREATMENT_PAGE_ENDPOINT, formSpecialty);
+      return await axiosPrivate.post(TREATMENT_PAGE_ENDPOINT, formTreatment);
     } catch (error) {
       console.log(error);
     }
@@ -36,6 +36,7 @@ export default class TreatmentService {
   }
 
   public async updateTreatment(id: string, formTreatment: TreatmentPayload) {
+    console.log("form", formTreatment);
     try {
       return await axiosPrivate.put(TREATMENT_PAGE_ENDPOINT + "/" + id, formTreatment);
     } catch (error) {

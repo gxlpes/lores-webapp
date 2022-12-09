@@ -17,27 +17,30 @@ const Treatments = () => {
                 <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                     <Subheader createNew={createNewTreatment} />
 
-                    <RowHeader>
-                        <p>Id</p>
-                        <p>Preço</p>
-                        <p>Descrição</p>
-                        <p>Especialidade</p>
-                    </RowHeader>
 
-                    {allTreatments != "No treatments were found" ? (allTreatments!.map((el: any) => (
+                    {allTreatments != "No treatments were found" ? (
                         <>
-                            <Row>
-                                <p>{el.id}</p>
-                                <p>{el.priceAppointment}</p>
-                                <p>{el.procedureName}</p>
-                                <p>{el.fieldOfSpecialty}</p>
-                                <Content maxWidth={false}>
-                                    <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                    <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                </Content>
-                            </Row>
-                        </>
-                    ))) : (<p>Opa, sem tratamentos</p>)}
+                            <RowHeader>
+                                <p>Id</p>
+                                <p>Preço</p>
+                                <p>Descrição</p>
+                                <p>Especialidade</p>
+                            </RowHeader>
+                        </> &&
+                        (allTreatments!.map((el: any) => (
+                            <>
+                                <Row>
+                                    <p>{el.id}</p>
+                                    <p>{el.priceAppointment}</p>
+                                    <p>{el.procedureName}</p>
+                                    <p>{el.fieldOfSpecialty}</p>
+                                    <Content maxWidth={false}>
+                                        <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                        <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                    </Content>
+                                </Row>
+                            </>
+                        )))) : (<p>Nenhum tratamento cadastrado</p>)}
                 </Content>
             </Fullpage>
         </>

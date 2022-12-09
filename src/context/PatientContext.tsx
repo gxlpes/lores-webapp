@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { responseHandler } from "../api/responseHandler";
 import { IPatient } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { PatientPayload } from "../domain/payload/PatientPayload";
@@ -15,7 +16,6 @@ export const PatientContextProvider = ({ children }: IChildren) => {
     const { userForm } = useContext(LoginUserContext);
     const [loading, setLoading] = useState(true);
     const patientService = new PatientService();
-    const userService = new UserService();
     const navigate = useNavigate();
 
     const getAllMethodItems = async () => {
@@ -29,6 +29,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
     const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let response = await patientService.savePatient(formPatient);
+        responseHandler(response, "post");
     }
 
     const deleteMethodItem = async (id: string) => {
@@ -40,7 +41,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
     const updateMethodItem = async (id: string) => {
         setFormPatient({} as PatientPayload);
         let response = await patientService.getPatient(id);
-        console.log(response!.data);
+        console.log(response!.data, "single");
 
         if (response?.data) {
             setFormPatient(response.data);
@@ -51,6 +52,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
     const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
         e.preventDefault();
         let response = await patientService.updatePatient(location, formPatient);
+        responseHandler(response, "put");
     }
 
     const createNewPatient = () => {

@@ -19,31 +19,34 @@ const Dentists = () => {
                 <Fullpage color={WHITE_COLOR}>
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                         <Subheader createNew={createNewDentist} />
-                        <RowHeader>
-                            <p>CRO</p>
-                            <p>Nome</p>
-                            <p>CPF</p>
-                            <p>Nascimento</p>
-                            <p>Celular</p>
-                            <p>Email</p>
-                        </RowHeader>
 
-                        {allDentists != "No dentists were found" ? (allDentists.map((el: Dentist) => (
+                        {allDentists != "No dentists were found" ? (
                             <>
-                                <Row>
-                                    <p>{el.croNumber}</p>
-                                    <p>{el.person.fullName}</p>
-                                    <p>{el.person.cpfNumber}</p>
-                                    <p>{el.person.birthdate}</p>
-                                    <p>{el.person.telephoneNumber}</p>
-                                    <p>{el.person.emailAddress}</p>
-                                    <Content maxWidth={false}>
-                                        <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                        <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                    </Content>
-                                </Row>
-                            </>
-                        ))) : (<p>Sem dentistas</p>)}
+                                <RowHeader>
+                                    <p>CRO</p>
+                                    <p>Nome</p>
+                                    <p>CPF</p>
+                                    <p>Nascimento</p>
+                                    <p>Celular</p>
+                                    <p>Email</p>
+                                </RowHeader>
+                            </> &&
+                            (allDentists.map((el: Dentist) => (
+                                <>
+                                    <Row>
+                                        <p>{el.croNumber}</p>
+                                        <p>{el.person.fullName}</p>
+                                        <p>{el.person.cpfNumber}</p>
+                                        <p>{el.person.birthdate}</p>
+                                        <p>{el.person.telephoneNumber}</p>
+                                        <p>{el.person.emailAddress}</p>
+                                        <Content maxWidth={false}>
+                                            <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                            <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                        </Content>
+                                    </Row>
+                                </>
+                            )))) : (<p>Sem dentistas</p>)}
 
                     </Content>
                 </Fullpage>

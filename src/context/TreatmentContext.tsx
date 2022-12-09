@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { responseHandler } from "../api/responseHandler";
 import { ITreatment } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { TreatmentPayload } from "../domain/payload/TreatmentPayload";
@@ -26,11 +27,12 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
     const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let response = await treatmentService.saveTreatment(formTreatment);
+        responseHandler(response, "post");
     }
 
     const deleteMethodItem = async (id: string) => {
         let response = await treatmentService.deleteTreatment(id);
-        console.log(response);
+        responseHandler(response, "delete");
     }
 
     const updateMethodItem = async (id: string) => {
@@ -47,6 +49,7 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
     const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
         e.preventDefault();
         let response = await treatmentService.updateTreatment(location, formTreatment);
+        responseHandler(response, "put");
     }
 
     const createNewTreatment = () => {

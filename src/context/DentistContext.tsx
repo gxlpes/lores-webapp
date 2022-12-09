@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { responseHandler } from "../api/responseHandler";
 import { IDentist } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { DentistPayload } from "../domain/payload/DentistPayload";
@@ -26,17 +27,13 @@ export const DentistContextProvider = ({ children }: IChildren) => {
 
     const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formDentist);
         let response = await dentistService.saveDentist(formDentist);
-
-        if (response?.status == 200) {
-            window.location.href = "/main";
-        }
+        responseHandler(response, "post");
     }
 
     const deleteMethodItem = async (id: string) => {
         let response = await dentistService.deleteDentist(id);
-        console.log(response);
+        responseHandler(response, 'delete');
     }
 
     const updateMethodItem = async (id: string) => {
@@ -46,18 +43,20 @@ export const DentistContextProvider = ({ children }: IChildren) => {
 
         if (response?.data) {
             setFormDentist(response.data);
-            navigate(`/patients/form/${id}`)
+            navigate(`/dentists/form/${id}`)
         }
     }
 
     const saveUpdatedMethodItem = async (e: React.FormEvent<HTMLFormElement>, location: string) => {
         e.preventDefault();
+        console.log(formDentist);
         let response = await dentistService.updateDentist(location, formDentist);
+        responseHandler(response, "put");
     }
 
     const createNewDentist = () => {
         setFormDentist({} as DentistPayload);
-        navigate("/patients/form/new");
+        navigate("/dentists/form/new");
     }
 
     useEffect((() => {

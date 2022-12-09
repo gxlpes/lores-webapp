@@ -8,6 +8,10 @@ export const SubheaderWrapper = styled.div`
     
     width: 100%;
 
+    button {
+        margin-block: 2rem;
+    }
+
     form {
         display: flex;
         flex-direction: row !important;

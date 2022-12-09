@@ -22,21 +22,26 @@ const Specialties = () => {
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                         <Subheader createNew={createNewSpecialty} />
 
-                        <RowHeader>
-                            <p>Título</p>
-                        </RowHeader>
 
-                        {allSpecialties != "No specialties were found" ? (allSpecialties!.map((el: any) => (
+                        {allSpecialties != "No specialties were found" ? (
                             <>
-                                <Row>
-                                    <p>{el.title}</p>
-                                    <Content maxWidth={false}>
-                                        <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                        <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                    </Content>
-                                </Row>
-                            </>
-                        ))) : (<p>Opa, sem especialidade</p>)}
+                                <RowHeader>
+                                    <p>Título</p>
+                                </RowHeader>
+                            </> &&
+                            (allSpecialties!.map((el: any) => (
+                                <>
+                                    <Row>
+                                        <p>{el.title}</p>
+                                        <Content maxWidth={false}>
+                                            <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                            <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                        </Content>
+                                    </Row>
+                                </>
+                            )))
+
+                        ) : (<p>Nenhuma especialidade foi encontrada</p>)}
 
                     </Content>
                 </Fullpage>
