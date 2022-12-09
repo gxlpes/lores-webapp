@@ -13,7 +13,7 @@ const FormTreatment = () => {
 
     return (
         <Content maxWidth={true} direction="column" align="flex-start" justify="center">
-            <Form padding={true} width={"100vw"} shadow={false} color={WHITE_COLOR}
+            <Form padding={true} width={"100%"} shadow={false} color={WHITE_COLOR}
                 onSubmit={(e) => idPath.length > 10 ? saveUpdatedMethodItem!(e, idPath) : saveMethodItem(e)}>
                 <>
                     <Label htmlFor="priceAppointment">Preço</Label>

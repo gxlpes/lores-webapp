@@ -25,23 +25,24 @@ const Specialties = () => {
 
                         {allSpecialties != "No specialties were found" ? (
                             <>
-                                <RowHeader>
-                                    <p>Título</p>
-                                </RowHeader>
-                            </> &&
-                            (allSpecialties!.map((el: any) => (
                                 <>
-                                    <Row>
-                                        <p>{el.title}</p>
-                                        <Content maxWidth={false}>
-                                            <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                            <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                        </Content>
-                                    </Row>
+                                    <RowHeader>
+                                        <p>Título</p>
+                                    </RowHeader>
                                 </>
-                            )))
 
-                        ) : (<p>Nenhuma especialidade foi encontrada</p>)}
+                                {allSpecialties!.map((el: any) => (
+                                    <>
+                                        <Row>
+                                            <p>{el.title}</p>
+                                            <Content maxWidth={false}>
+                                                <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                                <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                            </Content>
+                                        </Row>
+                                    </>
+                                ))}
+                            </>) : (<p>Nenhuma especialidade foi encontrada</p>)}
 
                     </Content>
                 </Fullpage>

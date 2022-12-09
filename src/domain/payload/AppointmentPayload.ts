@@ -1,4 +1,6 @@
-export interface AppointmentPayload extends Patient, Dentist, Treatment {
+import { Person } from "../interfaces/entities/PersonInterface";
+
+export interface AppointmentPayload {
   patient: Patient;
   dentist: Dentist;
   treatment: Treatment;
@@ -7,13 +9,17 @@ export interface AppointmentPayload extends Patient, Dentist, Treatment {
 }
 
 export interface Patient {
+  person: Person;
   id: string;
 }
 
 export interface Dentist {
+  person: Person;
   id: string;
 }
 
 export interface Treatment {
+  procedureName?: string;
+  fieldOfSpecialty?: string;
   id: string;
 }

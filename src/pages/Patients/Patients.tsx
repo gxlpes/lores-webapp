@@ -20,31 +20,35 @@ const Patients = () => {
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                         <Subheader createNew={createNewPatient} />
 
-                        {allPatients != "No patients were found" ? (
+                        {allPatients !== "No patients were found" ? (
                             <>
-                                <RowHeader>
-                                    <p>CPF</p>
-                                    <p>Nome</p>
-                                    <p>Nascimento</p>
-                                    <p>Celular</p>
-                                    <p>Email</p>
-                                </RowHeader>
-                            </> &&
-                            (allPatients.map((el: Patient) => (
                                 <>
-                                    <Row>
-                                        <p>{el.person?.cpfNumber}</p>
-                                        <p>{el.person?.fullName}</p>
-                                        <p>{el.person?.birthdate}</p>
-                                        <p>{el.person?.telephoneNumber}</p>
-                                        <p>{el.person?.emailAddress}</p>
-                                        <Content maxWidth={false}>
-                                            <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                            <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                        </Content>
-                                    </Row>
+                                    <RowHeader>
+                                        <p>CPF</p>
+                                        <p>Nome</p>
+                                        <p>Nascimento</p>
+                                        <p>Celular</p>
+                                        <p>Email</p>
+                                    </RowHeader>
                                 </>
-                            )))) : (<p>Sem pacientes</p>)}
+
+                                {allPatients.map((el: Patient) => (
+                                    <>
+                                        <Row>
+                                            <p>{el.person?.cpfNumber}</p>
+                                            <p>{el.person?.fullName}</p>
+                                            <p>{el.person?.birthdate}</p>
+                                            <p>{el.person?.telephoneNumber}</p>
+                                            <p>{el.person?.emailAddress}</p>
+                                            <Content maxWidth={false}>
+                                                <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                                <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                            </Content>
+                                        </Row>
+                                    </>
+                                ))}
+                            </>
+                        ) : (<p>Sem pacientes</p>)}
 
                     </Content>
                 </Fullpage>

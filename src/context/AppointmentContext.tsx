@@ -18,9 +18,10 @@ export const AppointmentContextProvider = ({ children }: IChildren) => {
     const [allAppointments, setAllAppointments] = useState<AppointmentPayload[] | string[]>([]);
     const [formAppointment, setFormAppointment] = useState<AppointmentPayload>({} as AppointmentPayload)
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
     const [dentistCro, setDentistCro] = useState("");
     const [patientCpf, setPatientCpf] = useState("");
+    const navigate = useNavigate();
+
 
     const getAllMethodItems = async () => {
         let response = await appointmentService.getAllAppointments();
@@ -43,7 +44,7 @@ export const AppointmentContextProvider = ({ children }: IChildren) => {
 
     const deleteMethodItem = async (id: string) => {
         let response = await appointmentService.deleteAppointment(id);
-        console.log(response);
+        responseHandler(response, 'delete');
     }
 
     const updateMethodItem = async (id: string) => {

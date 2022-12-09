@@ -34,7 +34,7 @@ export const PatientContextProvider = ({ children }: IChildren) => {
 
     const deleteMethodItem = async (id: string) => {
         let response = await patientService.deletePatient(id);
-        document.location.reload();
+        responseHandler(response, 'delete');
     }
 
 

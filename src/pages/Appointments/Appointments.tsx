@@ -17,23 +17,38 @@ const Appointments = () => {
                 <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                     <Subheader createNew={createNewAppointment} />
 
-                    {allAppointments != "No appointments were found" ? (
+                    {allAppointments !== "No appointments were found" ? (
                         <>
-                            <RowHeader>
-                                <p>Nome</p>
-                            </RowHeader>
-                        </> &&
-                        (allAppointments.map((el: any) => (
                             <>
-                                <Row>
-                                    <p>a</p>
-                                    <Content maxWidth={false}>
-                                        <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                        <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                    </Content>
-                                </Row>
+                                <RowHeader>
+                                    <p>Data</p>
+                                    <p>Dentista</p>
+                                    <p>Paciente</p>
+                                    <p>Especialidade</p>
+                                    <p>Procedimento</p>
+                                    <p>Motivo</p>
+                                </RowHeader>
                             </>
-                        )))) : (<p>Nenhuma consulta cadastrada</p>)}
+
+                            {allAppointments.map((el: any) => (
+                                <>
+                                    <Row>
+                                        <p>{el.dateAppointment}</p>
+                                        <p>{el.dentist.person.fullName}</p>
+                                        <p>{el.patient.person.fullName}</p>
+                                        <p>{el.treatment.fieldOfSpecialty}</p>
+                                        <p>{el.treatment.procedureName}</p>
+                                        <p>{el.reason}</p>
+                                        <Content maxWidth={false}>
+                                            <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                            <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                        </Content>
+                                    </Row>
+                                </>
+                            ))}
+                        </>
+                    )
+                        : (<p>Nenhuma consulta cadastrada</p>)}
 
                 </Content>
             </Fullpage>

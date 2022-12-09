@@ -97,8 +97,19 @@ export const Input = styled.input`
     border: none;
     padding: 1rem;
     font-size: inherit;
-
 `;
+
+export const Select = styled.select`
+    background-color: ${GREY_COLOR};
+    border-radius: 0.3rem;
+    border: none;
+    padding: 1rem;
+    font-size: inherit;
+`;
+
+export const Option = styled.option`
+  width: 100%;
+`
 
 export const Label = styled.label`
     font-weight: 500;

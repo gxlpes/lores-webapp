@@ -92,7 +92,11 @@ const AppRoutes = () => {
 
                         <Route path={APPOINTMENTS_PAGE_ENDPOINT + "/form/:id"} element={
                             <AppointmentContextProvider>
-                                <AppointmentsForm />
+                                <DentistContextProvider>
+                                    <TreatmentContextProvider>
+                                        <AppointmentsForm />
+                                    </TreatmentContextProvider>
+                                </DentistContextProvider>
                             </AppointmentContextProvider>} />
 
 
