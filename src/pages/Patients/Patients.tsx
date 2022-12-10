@@ -29,6 +29,10 @@ const Patients = () => {
                                         <p>Nascimento</p>
                                         <p>Celular</p>
                                         <p>Email</p>
+                                        <Content maxWidth={false}>
+                                            <AiFillDelete />
+                                            <FaEdit />
+                                        </Content>
                                     </RowHeader>
                                 </>
 

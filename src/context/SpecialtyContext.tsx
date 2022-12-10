@@ -62,8 +62,8 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
 
     const assignSpecialtyToDentist = async (e: any) => {
         e.preventDefault();
-        e.preventDefault();
-        // let response = await specialtyService.assignSpecialtyToDentist(formDentistSpecialty.specialtyId, formDentistSpecialty.dentistId)
+        let response = await specialtyService.assignSpecialtyToDentist(formDentistSpecialty.specialtyId, formDentistSpecialty.dentistId)
+        if (response?.status == 200) window.location.href = "/specialties"
     }
 
     useEffect((() => {

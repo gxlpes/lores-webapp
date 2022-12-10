@@ -4,15 +4,9 @@ import { GREY_COLOR, MAIN_COLOR, WHITE_COLOR } from "../../styles/constants/colo
 export const HeaderWrapper = styled.header`
 padding-inline: 8rem;
 padding-block: 1rem;
-background-color: ${GREY_COLOR};
+background-color: ${WHITE_COLOR};
 transition: all 0.3s ease-in-out;
-
-.dropdown {
-    z-index: 1;
-    position: absolute;
-    text-align: start;
-    top: 80px;
-}
+border-bottom: 2px solid ${GREY_COLOR};
 
 a:not(.logo, .dropdown) {
     color: ${MAIN_COLOR};

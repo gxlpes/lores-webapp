@@ -27,6 +27,10 @@ const Appointments = () => {
                                     <p>Especialidade</p>
                                     <p>Procedimento</p>
                                     <p>Motivo</p>
+                                    <Content maxWidth={false}>
+                                        <AiFillDelete />
+                                        <FaEdit />
+                                    </Content>
                                 </RowHeader>
                             </>
 

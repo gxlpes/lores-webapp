@@ -5,6 +5,8 @@ export const Row = styled.div`
     border: 2px solid ${MAIN_COLOR};
     border-radius: 8px;
 
+    padding-inline: 1rem;
+
     display: flex;
     gap: 1rem;
     justify-content: flex-start;
@@ -12,14 +14,10 @@ export const Row = styled.div`
 
     p {
         padding: 1rem;
-        width: 14.6rem;
+        width: 14.5rem;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis
-    }
-
-    div {
-        padding: 1rem;
+        text-overflow: ellipsis;
     }
 
     svg {
@@ -29,16 +27,17 @@ export const Row = styled.div`
         }
     }
 `
-
-
 export const RowHeader = styled.div`
     display: flex;
     gap: 1rem;
     justify-content: flex-start;
+    width: 100%;
+    padding-inline: 1rem;
+    color: ${MAIN_COLOR};
 
     p {
         padding: 0rem 1rem 0rem 1rem;
-        width: 14.6rem;
+        width: 14.5rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

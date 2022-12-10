@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const PatientsWrapper = styled.div`
-    form {
+    svg {
+        width: 2rem;
     }
 `
 

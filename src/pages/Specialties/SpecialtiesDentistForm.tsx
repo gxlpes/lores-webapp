@@ -24,7 +24,7 @@ const SpecialtiesDentistForm = () => {
                 ) : (<p>Sem treatment</p>)}
             </Select>
             <Label htmlFor="dentist">Dentista</Label>
-            <Select onChange={(e) => setFormDentistSpecialty({ ...formDentistSpecialty, dentistId: e.target.value })}>
+            <Select onBlur={(e) => setFormDentistSpecialty({ ...formDentistSpecialty, dentistId: e.target.value })}>
                 {allDentists !== undefined ? (
                     (
                         allDentists.map((el: any) => (
