@@ -6,7 +6,7 @@ import { LayoutProps } from "../domain/props/LayoutProps"
 const Layout = ({ layoutProfile }: LayoutProps) => {
     return (
         <>
-            {layoutProfile === LayoutProfile.private && <Header />}
+            {layoutProfile === LayoutProfile.public && <Header layoutProfile={layoutProfile} />}
             <Outlet />
         </>
     )
