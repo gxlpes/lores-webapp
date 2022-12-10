@@ -41,6 +41,10 @@ export interface ISpecialty extends IServiceMethods {
   formSpecialty: SpecialtyPayload;
   setFormSpecialty: Dispatch<SetStateAction<SpecialtyPayload>>;
   createNewSpecialty: () => void;
+
+  assignSpecialtyToDentist: any;
+  setFormDentistSpecialty: any;
+  formDentistSpecialty: any;
 }
 
 export interface ITreatment extends IServiceMethods {

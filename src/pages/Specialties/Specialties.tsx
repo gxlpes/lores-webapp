@@ -1,29 +1,34 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { Row, RowHeader } from '../../components/Row/Row';
 import Subheader from '../../components/Subheader/Subheader';
-import { PatientContext } from '../../context/PatientContext';
 import { SpecialtyContext } from '../../context/SpecialtyContext';
 import { WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
 import { Fullpage } from '../../styles/Fullpage';
-import SpecialtiesForm from './SpecialtiesForm';
+import { Button } from '../../styles/global/GlobalStyles';
 import { SpecialtiesWrapper } from './SpecialtiesStyles';
 
 const Specialties = () => {
     const { allSpecialties, updateMethodItem, createNewSpecialty, deleteMethodItem } = useContext(SpecialtyContext);
-    console.log("all", allSpecialties);
+    const navigate = useNavigate();
+
+    console.log(allSpecialties)
 
     return (
         <>
             <SpecialtiesWrapper>
                 <Fullpage color={WHITE_COLOR}>
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
-                        <Subheader createNew={createNewSpecialty} />
+                        <Content maxWidth={true} direction="row" align="center" >
 
+                            <Subheader createNew={createNewSpecialty} />
+                            <Button onClick={() => navigate("form/specialty/dentist")}>Cadastrar dentista</Button>
+                        </Content>
 
-                        {allSpecialties != "No specialties were found" ? (
+                        {allSpecialties != undefined ? (
                             <>
                                 <>
                                     <RowHeader>

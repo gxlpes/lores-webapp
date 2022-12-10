@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-import { LoginUserContext } from '../../context/User/LoginContext';
-import { SEC_COLOR, MAIN_COLOR, WHITE_COLOR } from '../../styles/constants/colors';
+import { ReactComponent as LoresLogo } from "../../assets/logofull.svg";
+import { MAIN_COLOR, SEC_COLOR, WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
-import { DotContainer, Dot } from '../../styles/Dot';
-import { Fullpage, FullpageW } from '../../styles/Fullpage';
+import { Dot, DotContainer } from '../../styles/Dot';
+import { Fullpage } from '../../styles/Fullpage';
 import LoginForm from './LoginForm';
 import { HeaderLogin, LoginSection, LoginUserWrapper } from './LoginUserStyles';
-import { ReactComponent as LoresLogo } from "../../assets/logofull.svg"
 
 const LoginUser = () => {
 

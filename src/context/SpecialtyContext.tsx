@@ -12,16 +12,19 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
     const specialtyService = new SpecialtyService();
     const [allSpecialties, setAllSpecialties] = useState<SpecialtyPayload[]>();
     const [formSpecialty, setFormSpecialty] = useState<SpecialtyPayload>({} as SpecialtyPayload)
+    const [formDentistSpecialty, setFormDentistSpecialty] = useState<any>("");
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    console.log(formDentistSpecialty);
 
     const getAllMethodItems = async () => {
         let response = await specialtyService.getAllSpecialties();
         if (response?.status == 200) {
             setAllSpecialties(response.data);
-            setLoading(false);
         }
+        setLoading(false);
+
     }
 
     const saveMethodItem = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,9 +60,15 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
         navigate("/specialties/form/new");
     }
 
+    const assignSpecialtyToDentist = async (e: any) => {
+        e.preventDefault();
+        e.preventDefault();
+        // let response = await specialtyService.assignSpecialtyToDentist(formDentistSpecialty.specialtyId, formDentistSpecialty.dentistId)
+    }
+
     useEffect((() => {
         getAllMethodItems();
-    }), [])
+    }), []);
 
     return (
         <SpecialtyContext.Provider value={{
@@ -71,7 +80,10 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
             getAllMethodItems,
             createNewSpecialty,
             saveUpdatedMethodItem,
-            updateMethodItem
+            updateMethodItem,
+            setFormDentistSpecialty,
+            formDentistSpecialty,
+            assignSpecialtyToDentist
         }}>
             <>
                 {loading ? <p>loading</p>

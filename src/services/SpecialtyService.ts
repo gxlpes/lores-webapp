@@ -42,4 +42,12 @@ export default class SpecialtyService {
       console.log(error);
     }
   }
+
+  // public async assignSpecialtyToDentist(idSpec: string, idDent: SpecialtyPayload) {
+  //   try {
+  //     return await axiosPrivate.put(SPECIALTY_PAGE_ENDPOINT + "/" + idSpec + "/dentist/" + idDent);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 }

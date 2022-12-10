@@ -13,12 +13,16 @@ const Header = () => {
         <HeaderWrapper>
             <ul>
                 <Content maxWidth={false} justify={"space-between"}>
+
                     <ContainerLogo>
                         <NavLink className="logo" to={"/login"}>
                             <Logo />
                         </NavLink>
-                        <p>{auth == 1 ? "Administrador" : "Usuário"} | {username}</p>
+                        <NavLink to={"/main"}>
+                            <p>{auth == 1 ? "Administrador" : "Usuário"} | {username}</p>
+                        </NavLink>
                     </ContainerLogo>
+
                     <ContainerLinks>
                         <NavLink to={"/patients"}><li>Pacientes </li></NavLink>
                         <NavLink to={"/dentists"}><li>Dentistas</li></NavLink>

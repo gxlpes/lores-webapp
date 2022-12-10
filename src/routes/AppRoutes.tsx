@@ -22,6 +22,7 @@ import Patients from "../pages/Patients/Patients";
 import PatientsForm from "../pages/Patients/PatientsForm";
 import RegisterUser from '../pages/Register/RegisterUser';
 import Specialties from "../pages/Specialties/Specialties";
+import SpecialtiesDentistForm from "../pages/Specialties/SpecialtiesDentistForm";
 import SpecialtiesForm from "../pages/Specialties/SpecialtiesForm";
 import Treatments from "../pages/Treatments/Treatments";
 import TreatmentsForm from "../pages/Treatments/TreatmentsForm";
@@ -74,6 +75,13 @@ const AppRoutes = () => {
                                 <SpecialtiesForm />
                             </SpecialtyContextProvider>} />
 
+                        <Route path={SPECIALTY_PAGE_ENDPOINT + "/form/specialty/dentist"} element={
+                            <SpecialtyContextProvider>
+                                <DentistContextProvider>
+                                    <SpecialtiesDentistForm />
+                                </DentistContextProvider>
+                            </SpecialtyContextProvider>} />
+
 
                         <Route path={TREATMENT_PAGE_ENDPOINT} element={
                             <TreatmentContextProvider>
@@ -100,7 +108,18 @@ const AppRoutes = () => {
                             </AppointmentContextProvider>} />
 
 
-                        <Route path={MAIN_PAGE_ENDPOINT} element={<Main />} />
+                        <Route path={MAIN_PAGE_ENDPOINT} element={
+                            <AppointmentContextProvider>
+                                <DentistContextProvider>
+                                    <TreatmentContextProvider>
+                                        <PatientContextProvider>
+                                            <SpecialtyContextProvider>
+                                                <Main />
+                                            </SpecialtyContextProvider>
+                                        </PatientContextProvider>
+                                    </TreatmentContextProvider>
+                                </DentistContextProvider>
+                            </AppointmentContextProvider>} />
                     </Route>
                 </Route>
 
