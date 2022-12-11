@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
+import { getLocalStorage } from '../../common/localStorage';
 import { Row, RowHeader } from '../../components/Row/Row';
 import Subheader from '../../components/Subheader/Subheader';
 import { AppointmentContext } from '../../context/AppointmentContext';
@@ -26,10 +27,13 @@ const Appointments = () => {
                                     <p>Especialidade</p>
                                     <p>Procedimento</p>
                                     <p>Motivo</p>
-                                    <Content maxWidth={false}>
-                                        <AiFillDelete />
-                                        <FaEdit />
-                                    </Content>
+                                    {getLocalStorage("auth", "role") == 1 ? (
+                                        <Content maxWidth={false}>
+                                            <AiFillDelete />
+                                            <FaEdit />
+                                        </Content>
+                                    ) : undefined}
+
                                 </RowHeader>
                             </>
 
@@ -42,10 +46,12 @@ const Appointments = () => {
                                         <p>{el.treatment.fieldOfSpecialty}</p>
                                         <p>{el.treatment.procedureName}</p>
                                         <p>{el.reason}</p>
-                                        <Content maxWidth={false}>
-                                            <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
-                                            <FaEdit onClick={() => updateMethodItem!(el.id)} />
-                                        </Content>
+                                        {getLocalStorage("auth", "role") == 1 ? (
+                                            <Content maxWidth={false}>
+                                                <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
+                                                <FaEdit onClick={() => updateMethodItem!(el.id)} />
+                                            </Content>
+                                        ) : undefined}
                                     </Row>
                                 </>
                             ))}

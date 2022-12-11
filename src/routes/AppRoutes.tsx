@@ -37,7 +37,6 @@ const AppRoutes = () => {
                 <Route path={LOGIN_PAGE_ENDPOINT} element={<LoginUser />} />
 
                 <Route element={<Layout />}>
-
                     <Route path={MAIN_PAGE_ENDPOINT} element={
                         <AppointmentContextProvider>
                             <DentistContextProvider>
@@ -53,13 +52,20 @@ const AppRoutes = () => {
                 </Route>
 
 
-                <Route element={<RequireAuth allowedRoles={[RolesName.user]} />}>
+                <Route element={<RequireAuth allowedRoles={[RolesName.user, RolesName.admin]} />}>
                     <Route element={<Layout layoutProfile={LayoutProfile.public} />}>
 
-                        <Route path={PATIENTS_PAGE_ENDPOINT} element={
-                            <PatientContextProvider>
-                                <Patients />
-                            </PatientContextProvider>} />
+                        <Route path={APPOINTMENTS_PAGE_ENDPOINT} element={
+                            <AppointmentContextProvider>
+                                <Appointments />
+                            </AppointmentContextProvider>} />
+
+                    </Route>
+                </Route>
+
+                <Route element={<RequireAuth allowedRoles={[RolesName.admin]} />}>
+                    <Route element={<Layout layoutProfile={LayoutProfile.private} />}>
+
 
                         <Route path={PATIENTS_PAGE_ENDPOINT} element={
                             <PatientContextProvider>
@@ -81,45 +87,16 @@ const AppRoutes = () => {
                                 <Treatments />
                             </TreatmentContextProvider>} />
 
-                        <Route path={APPOINTMENTS_PAGE_ENDPOINT} element={
-                            <AppointmentContextProvider>
-                                <Appointments />
-                            </AppointmentContextProvider>} />
-
-                    </Route>
-                </Route>
-
-
-
-                <Route element={<RequireAuth allowedRoles={[RolesName.admin]} />}>
-                    <Route element={<Layout layoutProfile={LayoutProfile.private} />}>
-
-
-
-                        <Route path={PATIENTS_PAGE_ENDPOINT} element={
-                            <PatientContextProvider>
-                                <Patients />
-                            </PatientContextProvider>} />
-
                         <Route path={PATIENTS_PAGE_ENDPOINT + "/form/:id"} element={
                             <PatientContextProvider>
                                 <PatientsForm />
                             </PatientContextProvider>} />
-
-                        <Route path={DENTISTS_PAGE_ENDPOINT} element={
-                            <DentistContextProvider>
-                                <Dentists />
-                            </DentistContextProvider>} />
 
                         <Route path={DENTISTS_PAGE_ENDPOINT + "/form/:id"} element={
                             <DentistContextProvider>
                                 <DentistsForm />
                             </DentistContextProvider>} />
 
-                        <Route path={SPECIALTY_PAGE_ENDPOINT} element={
-                            <SpecialtyContextProvider>
-                                <Specialties />
-                            </SpecialtyContextProvider>} />
 
                         <Route path={SPECIALTY_PAGE_ENDPOINT + "/form/:id"} element={
                             <SpecialtyContextProvider>
@@ -134,20 +111,12 @@ const AppRoutes = () => {
                             </SpecialtyContextProvider>} />
 
 
-                        <Route path={TREATMENT_PAGE_ENDPOINT} element={
-                            <TreatmentContextProvider>
-                                <Treatments />
-                            </TreatmentContextProvider>} />
-
                         <Route path={TREATMENT_PAGE_ENDPOINT + "/form/:id"} element={
                             <TreatmentContextProvider>
                                 <TreatmentsForm />
                             </TreatmentContextProvider>} />
 
-                        <Route path={APPOINTMENTS_PAGE_ENDPOINT} element={
-                            <AppointmentContextProvider>
-                                <Appointments />
-                            </AppointmentContextProvider>} />
+
 
                         <Route path={APPOINTMENTS_PAGE_ENDPOINT + "/form/:id"} element={
                             <AppointmentContextProvider>
@@ -158,19 +127,6 @@ const AppRoutes = () => {
                                 </DentistContextProvider>
                             </AppointmentContextProvider>} />
 
-
-                        <Route path={MAIN_PAGE_ENDPOINT} element={
-                            <AppointmentContextProvider>
-                                <DentistContextProvider>
-                                    <TreatmentContextProvider>
-                                        <PatientContextProvider>
-                                            <SpecialtyContextProvider>
-                                                <Main />
-                                            </SpecialtyContextProvider>
-                                        </PatientContextProvider>
-                                    </TreatmentContextProvider>
-                                </DentistContextProvider>
-                            </AppointmentContextProvider>} />
 
                     </Route>
                 </Route>

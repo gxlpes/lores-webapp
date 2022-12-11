@@ -3,12 +3,10 @@ import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Row, RowHeader } from '../../components/Row/Row';
-import Subheader from '../../components/Subheader/Subheader';
 import { SpecialtyContext } from '../../context/SpecialtyContext';
 import { WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
 import { Fullpage } from '../../styles/Fullpage';
-import { Button } from '../../styles/global/GlobalStyles';
 import { SpecialtiesWrapper } from './SpecialtiesStyles';
 
 const Specialties = () => {
@@ -23,8 +21,6 @@ const Specialties = () => {
                 <Fullpage color={WHITE_COLOR}>
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                         <Content maxWidth={true} direction="row" align="center" >
-
-                            <Button onClick={() => navigate("form/specialty/dentist")}>Cadastrar dentista</Button>
                         </Content>
 
                         {allSpecialties != undefined ? (

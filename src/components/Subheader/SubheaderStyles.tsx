@@ -5,7 +5,6 @@ export const SubheaderWrapper = styled.div`
     display: flex;
     gap: 2rem;
     align-items: center;
-    justify-content: space-between;
     
     width: 100%;
 

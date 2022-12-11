@@ -5,7 +5,7 @@ import { getLocalStorage } from "./localStorage";
 const RequireAuth = ({ allowedRoles }: any) => {
   const location = useLocation();
 
-  return getLocalStorage("auth", "role") == allowedRoles[0]
+  return allowedRoles.includes(getLocalStorage("auth", "role"))
     ? <Outlet />
     : getLocalStorage("auth", "token")
       ? <Navigate to="/unauthorized" state={{ from: location }} replace />

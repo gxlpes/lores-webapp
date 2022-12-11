@@ -12,8 +12,8 @@ interface PropsStyles {
 
 export const Content = styled.div<PropsStyles>`
     max-width: ${(props) => props.maxWidth ? "100rem" : undefined};
-    margin-inline: auto;
     height: ${(props) => props.height ? "100%" : undefined};
+    margin-inline: auto;
 
     display: flex;
     flex-direction: ${(props) => props.direction ? props.direction : "center"};
