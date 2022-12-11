@@ -15,7 +15,6 @@ const Appointments = () => {
         <>
             <Fullpage color={WHITE_COLOR}>
                 <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
-                    <Subheader createNew={createNewAppointment} />
 
                     {allAppointments !== "No appointments were found" ? (
                         <>

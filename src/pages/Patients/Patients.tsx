@@ -18,7 +18,6 @@ const Patients = () => {
             <PatientsWrapper>
                 <Fullpage color={WHITE_COLOR}>
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
-                        <Subheader createNew={createNewPatient} />
 
                         {allPatients !== "No patients were found" ? (
                             <>

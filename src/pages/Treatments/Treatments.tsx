@@ -15,8 +15,6 @@ const Treatments = () => {
         <>
             <Fullpage color={WHITE_COLOR}>
                 <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
-                    <Subheader createNew={createNewTreatment} />
-
 
                     {allTreatments != "No treatments were found" ? (
                         <>

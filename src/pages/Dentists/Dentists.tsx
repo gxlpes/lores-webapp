@@ -18,7 +18,6 @@ const Dentists = () => {
             <DentistsWrapper>
                 <Fullpage color={WHITE_COLOR}>
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
-                        <Subheader createNew={createNewDentist} />
 
                         {allDentists !== "No dentists were found" ? (
                             <>

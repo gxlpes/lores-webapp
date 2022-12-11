@@ -24,7 +24,6 @@ const Specialties = () => {
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
                         <Content maxWidth={true} direction="row" align="center" >
 
-                            <Subheader createNew={createNewSpecialty} />
                             <Button onClick={() => navigate("form/specialty/dentist")}>Cadastrar dentista</Button>
                         </Content>
 
