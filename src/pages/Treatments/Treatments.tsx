@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaEllipsisH } from 'react-icons/fa';
 import { RowHeader, Row } from '../../components/Row/Row';
 import Subheader from '../../components/Subheader/Subheader';
 import { TreatmentContext } from '../../context/TreatmentContext';
@@ -23,6 +23,7 @@ const Treatments = () => {
                                     <p>Id</p>
                                     <p>Preço</p>
                                     <p>Descrição</p>
+                                    <p>Campo de atuação</p>
                                     <p>Especialidade</p>
                                 </RowHeader>
                             </>
@@ -35,6 +36,7 @@ const Treatments = () => {
                                             <p>{el.priceAppointment}</p>
                                             <p>{el.procedureName}</p>
                                             <p>{el.fieldOfSpecialty}</p>
+                                            <p>{el.specialty?.title}</p>
                                             <Content maxWidth={false}>
                                                 <AiFillDelete onClick={() => deleteMethodItem(el.id)} />
                                                 <FaEdit onClick={() => updateMethodItem!(el.id)} />

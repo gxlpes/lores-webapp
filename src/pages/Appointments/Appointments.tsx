@@ -3,7 +3,6 @@ import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
 import { getLocalStorage } from '../../common/localStorage';
 import { Row, RowHeader } from '../../components/Row/Row';
-import Subheader from '../../components/Subheader/Subheader';
 import { AppointmentContext } from '../../context/AppointmentContext';
 import { WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
@@ -41,7 +40,7 @@ const Appointments = () => {
                                 <>
                                     <Row>
                                         <p>{el.dateAppointment}</p>
-                                        <p>{el.dentist.person.fullName}</p>
+                                        <p>{el.dentist?.person.fullName}</p>
                                         <p>{el.patient.person.fullName}</p>
                                         <p>{el.treatment.fieldOfSpecialty}</p>
                                         <p>{el.treatment.procedureName}</p>

@@ -43,4 +43,12 @@ export default class TreatmentService {
       console.log(error);
     }
   }
+
+  public async assignSpecialtyToTreatment(treamtentId: string, specialtyId: string) {
+    try {
+      return await axiosPrivate.put(TREATMENT_PAGE_ENDPOINT + "/" + treamtentId + "/specialty/" + specialtyId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

@@ -52,6 +52,9 @@ export interface ITreatment extends IServiceMethods {
   formTreatment: TreatmentPayload;
   setFormTreatment: Dispatch<SetStateAction<TreatmentPayload>>;
   createNewTreatment: () => void;
+  assignSpecialtyToTreatment: (e: React.FormEvent<HTMLFormElement>) => void;
+  setFormSpecialtyTreatment: any;
+  formSpecialtyTreatment: any;
 }
 
 export interface IAppointment extends IServiceMethods {

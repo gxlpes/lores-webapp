@@ -26,6 +26,7 @@ import SpecialtiesDentistForm from "../pages/Specialties/SpecialtiesDentistForm"
 import SpecialtiesForm from "../pages/Specialties/SpecialtiesForm";
 import Treatments from "../pages/Treatments/Treatments";
 import TreatmentsForm from "../pages/Treatments/TreatmentsForm";
+import TreatmentsSpecialtyForm from "../pages/Treatments/TreatmentsSpecialtyForm";
 
 
 const AppRoutes = () => {
@@ -116,7 +117,12 @@ const AppRoutes = () => {
                                 <TreatmentsForm />
                             </TreatmentContextProvider>} />
 
-
+                        <Route path={TREATMENT_PAGE_ENDPOINT + "/form/specialty/treatment"} element={
+                            <TreatmentContextProvider>
+                                <SpecialtyContextProvider>
+                                    <TreatmentsSpecialtyForm />
+                                </SpecialtyContextProvider>
+                            </TreatmentContextProvider>} />
 
                         <Route path={APPOINTMENTS_PAGE_ENDPOINT + "/form/:id"} element={
                             <AppointmentContextProvider>

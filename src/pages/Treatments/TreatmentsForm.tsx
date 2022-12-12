@@ -17,13 +17,16 @@ const FormTreatment = () => {
                 onSubmit={(e) => idPath.length > 10 ? saveUpdatedMethodItem!(e, idPath) : saveMethodItem(e)}>
                 <>
                     <Label htmlFor="priceAppointment">Preço</Label>
-                    <Input type="number" name="priceAppointment" id="priceAppointment" defaultValue={formTreatment.priceAppointment ?? null} onChange={(e) => setFormTreatment({ ...formTreatment, priceAppointment: Number(e.target.value) })} />
+                    <Input type="number" name="priceAppointment" id="priceAppointment" defaultValue={formTreatment.priceAppointment ?? null}
+                        onChange={(e) => setFormTreatment({ ...formTreatment, priceAppointment: Number(e.target.value) })} />
 
                     <Label htmlFor="fieldOfSpecialty">Campo da especialidade</Label>
-                    <Input type="text" name="fieldOfSpecialty" id="fieldOfSpecialty" defaultValue={formTreatment.fieldOfSpecialty ?? null} onChange={(e) => setFormTreatment({ ...formTreatment, fieldOfSpecialty: e.target.value })} />
+                    <Input type="text" name="fieldOfSpecialty" id="fieldOfSpecialty" defaultValue={formTreatment.fieldOfSpecialty ?? null}
+                        onChange={(e) => setFormTreatment({ ...formTreatment, fieldOfSpecialty: e.target.value })} />
 
                     <Label htmlFor="procedureName">Procedimento</Label>
-                    <Input type="text" name="procedureName" id="procedureName" defaultValue={formTreatment.procedureName ?? null} onChange={(e) => setFormTreatment({ ...formTreatment, procedureName: e.target.value })} />
+                    <Input type="text" name="procedureName" id="procedureName" defaultValue={formTreatment.procedureName ?? null}
+                        onChange={(e) => setFormTreatment({ ...formTreatment, procedureName: e.target.value })} />
 
                     <Button type="submit">Salvar</Button>
                 </>

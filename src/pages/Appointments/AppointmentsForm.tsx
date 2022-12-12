@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { getAfterSlash } from '../../common/getAfterSlash';
 import { AppointmentContext } from '../../context/AppointmentContext';
 import { DentistContext } from '../../context/DentistContext';
+import { PatientContext } from '../../context/PatientContext';
 import { TreatmentContext } from '../../context/TreatmentContext';
 import { WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
@@ -23,32 +24,32 @@ const AppointmentsForm = () => {
                 onSubmit={(e) => idPath.length > 10 ? saveUpdatedMethodItem!(e, idPath) : saveMethodItem(e)}>
                 <>
                     <Label htmlFor="idDentist">Dentista</Label>
-                    <Select onChange={(e) => setFormAppointment({ ...formAppointment, dentist: { ...formAppointment.dentist, id: e.target.value } })}>
+                    <Select onBlur={(e) => setFormAppointment({ ...formAppointment, dentist: { ...formAppointment.dentist, id: e.target.value } })}>
                         {allDentists !== undefined ? (
                             (
                                 allDentists.map((el: any) => (
                                     <Option value={el.id}>{el.person.fullName} - CRO {el.croNumber}</Option>
                                 ))
                             )
-                        ) : (<p>Sem treatment</p>)}
+                        ) : (<p>Sem dentistas cadastrados</p>)}
                     </Select>
 
                     <Label htmlFor="idPatient">Paciente</Label>
-                    <Input type="text" name="idPatient" id="idPatient" defaultValue={formAppointment.patient.person?.fullName ?? null}
-                        onChange={(e) => setPatientCpf(e.target.value)} />
+                    <Input type="text" name="idPatient" id="idPatient" defaultValue={formAppointment.patient?.person?.fullName ?? "a"}
+                        onBlur={(e) => setPatientCpf(e.target.value)} />
 
                     <Label htmlFor="idAppointment">Tratamento</Label>
                     <Select
                         defaultValue="a"
-                        onChange={(e) => setFormAppointment({ ...formAppointment, treatment: { ...formAppointment.treatment, id: e.target.value } })}>
-                        {allTreatments !== undefined} <Option value={formAppointment.treatment.fieldOfSpecialty + '-' + formAppointment.treatment.procedureName}>{formAppointment.treatment.fieldOfSpecialty + ' - ' + formAppointment.treatment.procedureName}</Option>
+                        onBlur={(e) => setFormAppointment({ ...formAppointment, treatment: { ...formAppointment.treatment, id: e.target.value } })}>
+                        {allTreatments !== undefined} <Option value={formAppointment.treatment?.fieldOfSpecialty + '-' + formAppointment.treatment?.procedureName}>{formAppointment.treatment?.fieldOfSpecialty + ' - ' + formAppointment.treatment?.procedureName}</Option>
                         {allTreatments !== undefined ? (
                             (
                                 allTreatments.map((el: any) => (
-                                    <Option value={el.id}>{el.fieldOfSpecialty} - CRO {el.procedureName}</Option>
+                                    <Option value={el.id}>{el.fieldOfSpecialty} - {el.procedureName}</Option>
                                 ))
                             )
-                        ) : (<p>Sem treatment</p>)}
+                        ) : (<p>Sem tratamentos cadastrados</p>)}
                     </Select>
 
                     <Label htmlFor="idAppointments">Data</Label>

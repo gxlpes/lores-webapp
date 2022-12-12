@@ -20,14 +20,21 @@ const Subheader = ({ layoutProfile }: LayoutProps) => {
             {LayoutProfile.private && url.pathname !== "/main" ? (
                 <Content maxWidth={true}>
                     < SubheaderWrapper >
-                        <Button onClick={() => navigate("form/new")}>Cadastrar</Button>
+                        <Button onClick={() => navigate(`${url.pathname}/form/new`)}>Cadastrar</Button>
+
                         {url.pathname === "/specialties" &&
-                            <Button onClick={() => navigate("form/specialty/dentist")}>Cadastrar dentista</Button>
+                            <Button onClick={() => navigate(`${url.pathname}/form/specialty/dentist`)}>Associar dentista</Button>
                         }
+
+                        {url.pathname === "/treatments" &&
+                            <Button onClick={() => navigate(`${url.pathname}/form/specialty/treatment`)}>Associar especialidade</Button>
+                        }
+
                         {/* <Form padding={false} shadow={false} color={WHITE_COLOR} onSubmit={() => createNew()}>
                     <Input type="text" />
                     <Button type="submit">Buscar</Button>
                 </Form> */}
+
                     </SubheaderWrapper>
                 </Content>
 

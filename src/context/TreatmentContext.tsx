@@ -12,6 +12,7 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
     const treatmentService = new TreatmentService();
     const [allTreatments, setAllTreatments] = useState<TreatmentPayload[]>();
     const [formTreatment, setFormTreatment] = useState<TreatmentPayload>({} as TreatmentPayload)
+    const [formSpecialtyTreatment, setFormSpecialtyTreatment] = useState<any>("");
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -57,6 +58,11 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
         navigate("/treatments/form/new");
     }
 
+    const assignSpecialtyToTreatment = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        let response = await treatmentService.assignSpecialtyToTreatment(formSpecialtyTreatment!.treatmentId, formSpecialtyTreatment!.specialtyId)
+        if (response?.status == 200) window.location.href = "/treatments"
+    }
 
     useEffect((() => {
         getAllMethodItems();
@@ -72,7 +78,10 @@ export const TreatmentContextProvider = ({ children }: IChildren) => {
             saveMethodItem,
             getAllMethodItems,
             saveUpdatedMethodItem,
-            createNewTreatment
+            createNewTreatment,
+            assignSpecialtyToTreatment,
+            setFormSpecialtyTreatment,
+            formSpecialtyTreatment
         }}>
             <>
                 {loading ? <p>loading</p>

@@ -1,21 +1,19 @@
 import { useContext } from 'react';
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
-import { useLocation } from 'react-router-dom';
 import { Row, RowHeader } from '../../components/Row/Row';
-import Subheader from '../../components/Subheader/Subheader';
 import { PatientContext } from '../../context/PatientContext';
 import { Patient } from '../../domain/interfaces/entities/PatientInterface';
 import { WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
 import { Fullpage } from '../../styles/Fullpage';
-import { PatientsWrapper } from './PatientsStyles';
+import { PatientsFormWrapper } from './PatientsStyles';
 
 const Patients = () => {
     const { allPatients, deleteMethodItem, updateMethodItem, createNewPatient } = useContext(PatientContext);
     return (
         <>
-            <PatientsWrapper>
+            <PatientsFormWrapper>
                 <Fullpage color={WHITE_COLOR}>
                     <Content maxWidth={true} direction="column" align='flex-start' justify='center'>
 
@@ -55,7 +53,7 @@ const Patients = () => {
 
                     </Content>
                 </Fullpage>
-            </PatientsWrapper>
+            </PatientsFormWrapper>
         </>
     )
 }
