@@ -16,8 +16,6 @@ export const SpecialtyContextProvider = ({ children }: IChildren) => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    console.log(formDentistSpecialty);
-
     const getAllMethodItems = async () => {
         let response = await specialtyService.getAllSpecialties();
         if (response?.status == 200) {

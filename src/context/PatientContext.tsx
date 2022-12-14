@@ -5,7 +5,6 @@ import { IPatient } from "../domain/interfaces/contextInterfaces";
 import { IChildren } from "../domain/interfaces/reactInterfaces";
 import { PatientPayload } from "../domain/payload/PatientPayload";
 import PatientService from "../services/PatientService";
-import UserService from "../services/UserService";
 import { LoginUserContext } from "./User/LoginContext";
 
 export const PatientContext = createContext<IPatient>({} as IPatient);

@@ -1,6 +1,5 @@
 import { SpecialtyContext } from '../../context/SpecialtyContext'
 import { useContext } from 'react';
-
 import { WHITE_COLOR } from '../../styles/constants/colors'
 import { Form, Label, Select, Option, Button } from '../../styles/global/GlobalStyles'
 import { DentistContext } from '../../context/DentistContext';
@@ -9,8 +8,6 @@ import { Content } from '../../styles/Content';
 const SpecialtiesDentistForm = () => {
     const { allSpecialties, setFormDentistSpecialty, formDentistSpecialty, assignSpecialtyToDentist } = useContext(SpecialtyContext);
     const { allDentists } = useContext(DentistContext);
-
-    console.log(allSpecialties);
 
     return (
         <Content maxWidth={true}>

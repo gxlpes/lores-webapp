@@ -9,8 +9,7 @@ import { Content } from '../../styles/Content';
 import { Fullpage } from '../../styles/Fullpage';
 
 const Appointments = () => {
-    const { allAppointments, saveMethodItem, setFormAppointment, updateMethodItem, createNewAppointment, formAppointment, deleteMethodItem } = useContext(AppointmentContext);
-    console.log(allAppointments, "all appointments");
+    const { allAppointments, updateMethodItem, deleteMethodItem } = useContext(AppointmentContext);
     return (
         <>
             <Fullpage color={WHITE_COLOR}>

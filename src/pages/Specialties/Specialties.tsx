@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 import { Row, RowHeader } from '../../components/Row/Row';
 import { SpecialtyContext } from '../../context/SpecialtyContext';
 import { WHITE_COLOR } from '../../styles/constants/colors';
@@ -11,9 +10,6 @@ import { SpecialtiesWrapper } from './SpecialtiesStyles';
 
 const Specialties = () => {
     const { allSpecialties, updateMethodItem, createNewSpecialty, deleteMethodItem } = useContext(SpecialtyContext);
-    const navigate = useNavigate();
-
-    console.log(allSpecialties)
 
     return (
         <>

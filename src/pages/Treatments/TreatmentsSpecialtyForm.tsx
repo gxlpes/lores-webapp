@@ -9,8 +9,6 @@ const TreatmentsSpecialtyForm = () => {
     const { formSpecialtyTreatment, setFormSpecialtyTreatment, assignSpecialtyToTreatment, allTreatments } = useContext(TreatmentContext);
     const { allSpecialties } = useContext(SpecialtyContext);
 
-    console.log(allSpecialties);
-
     return (
         <Content maxWidth={true}>
             <Form padding={true} width={"100%"} shadow={false} color={WHITE_COLOR} onSubmit={(e) => assignSpecialtyToTreatment(e)}>

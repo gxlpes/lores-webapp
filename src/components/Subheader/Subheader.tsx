@@ -1,6 +1,5 @@
 
 import { useLocation, useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../common/localStorage";
 import { LayoutProfile } from "../../domain/enum/LayoutProfile";
 import { LayoutProps } from "../../domain/props/LayoutProps";
 import { Content } from "../../styles/Content";

@@ -9,7 +9,7 @@ import { Content } from '../../styles/Content';
 import { Fullpage } from '../../styles/Fullpage';
 
 const Treatments = () => {
-    const { allTreatments, deleteMethodItem, createNewTreatment, updateMethodItem } = useContext(TreatmentContext);
+    const { allTreatments, deleteMethodItem, updateMethodItem } = useContext(TreatmentContext);
 
     return (
         <>

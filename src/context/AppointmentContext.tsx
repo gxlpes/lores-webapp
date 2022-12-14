@@ -25,7 +25,6 @@ export const AppointmentContextProvider = ({ children }: IChildren) => {
 
     const getAllMethodItems = async () => {
         let response = await appointmentService.getAllAppointments();
-        console.log(response);
 
         if (response?.status == 200) {
             setAllAppointments(response.data);

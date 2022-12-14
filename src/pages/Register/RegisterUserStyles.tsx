@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { WHITE_COLOR } from "../../styles/constants/colors";
-import { opacityAppear, upAppear } from "../../styles/global/GlobalStyles";
+import { opacityAppear } from "../../styles/global/GlobalStyles";
 
 export const RegisterUserWrapper = styled.div`
   transition: all 0.3s ease-in-out;

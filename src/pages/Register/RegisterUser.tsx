@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import { RegisterUserContext } from '../../context/User/RegisterContext';
 import { MAIN_COLOR, SEC_COLOR, WHITE_COLOR } from '../../styles/constants/colors';
 import { Content } from '../../styles/Content';
 import { Dot, DotContainer } from '../../styles/Dot';
